@@ -15,6 +15,9 @@
      -moz-column-count: 4;
           column-count: 4; }
 
+h1 {
+  color: yellow; }
+
 .fat_header {
   color: rgba(237, 237, 237, 0.8);
   display: -webkit-box;

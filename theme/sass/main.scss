@@ -3,7 +3,7 @@ $accent-color: yellow;
 
 // Base colors
 $base-color: #ededed;
-$brand-color: red;
+// $brand-color: red;
 $brand-80-color: rgba($base-color, 0.8);
 $accent-color: yellow;
 
@@ -22,7 +22,9 @@ $accent-color: yellow;
 
 }
 
-
+h1 {
+    color: yellow;
+}
 
 
 .fat_header {
