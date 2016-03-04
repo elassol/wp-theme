@@ -1,0 +1,31 @@
+$brand-color: red;
+$accent-color: yellow;
+
+// Base colors
+$base-color: #ededed;
+$brand-color: red;
+$brand-80-color: rgba($base-color, 0.8);
+$accent-color: yellow;
+
+.testing {
+  // Percentage is a Sass function
+  width: percentage(5/7);
+}
+
+.test {
+    border-radius: 25px;
+    box-shadow: 10px 10px;
+    opacity: 0.5;
+    display: flex;
+    transform: scale(0.5);
+    column-count: 4;
+
+}
+
+
+
+
+.fat_header {
+    color: $brand-80-color;
+    display: flex;
+}
