@@ -3,25 +3,32 @@ var autoprefixer = require('gulp-autoprefixer');
 var sass         = require ('gulp-sass');
 var plumber      = require('gulp-plumber');
 var notify       = require('gulp-notify'); 
+var browserSync  = require('browser-sync'); 
 
 
 
 
 
-function customPlumber () { return plumber({
-    return plumber({
-        errorHandler: notify.onError("Error: <%= error.message %>")
+function customPlumber(errTitle) { return plumber({
+        errorHandler: notify.onError({
+          // Customizing error title
+          title: errTitle || "Error running Gulp",
+          message: "Error: <%= error.message %>",
+        })
     });
 }
 
 gulp.task('sass', function(){
     return  gulp.src('theme/sass/**/*.scss')
-        .pipe(customPlumber())
+        .pipe(customPlumber('Error Running Sass'))
         .pipe(sass({
             precision: 2
         }))
         .pipe(autoprefixer())
         .pipe(gulp.dest('theme/css'));
+        .pipe(browserSync.reload{
+            stream: true
+        }))
 });
 
 
@@ -32,3 +39,9 @@ gulp.task('watch', function(){
 })
 
 
+gulp.task('browserSync', function() {
+      browserSync({
+        server: {
+          baseDir: 'app'
+    }, })
+})
