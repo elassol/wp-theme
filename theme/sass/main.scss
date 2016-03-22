@@ -1,4 +1,22 @@
 @import "variables";
+// Import Susy Grid
+@import "../bower_components/susy/sass/_susy.scss";
+
+
+// -----------------------------------------
+//     Susy setup
+// -----------------------------------------
+
+$susy: (
+  columns: 12,
+  gutters: .25,
+  container: 960px
+);
+
+
+// -----------------------------------------
+//     Main styles
+// -----------------------------------------
 
 .testing {
   // Percentage is a Sass function
@@ -17,10 +35,18 @@
 
 h1 {
     color: $brand-color;
+    opacity: 0.5;
 }
 
 
 .fat_header {
     color: $brand-80-color;
     display: flex;
+}
+
+
+
+.page_wrapper {
+     @include container;
+     margin: 0 auto;
 }
