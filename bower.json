@@ -1,0 +1,21 @@
+{
+  "name": "wp-theme",
+  "description": "",
+  "main": "app.js",
+  "authors": [
+    "eduardo <elassolGhotmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/elassol/wp-theme",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.2.2"
+  }
+}
