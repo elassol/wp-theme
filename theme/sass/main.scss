@@ -1,5 +1,5 @@
 @import "variables";
-// Import Susy Grid
+@import "typography";
 @import "../bower_components/susy/sass/_susy.scss";
 
 
@@ -51,39 +51,4 @@ h1 {
      margin: 0 auto;
 }
 
- article {
-            position: absolute;
-            top: 0px;
-            left: 0px;
-            bottom: 20px;
-            right: 20px;
-            padding: 30px; 
-            overflow-y: scroll;
-            overflow-x: hidden;
-
-
-            &::-webkit-scrollbar {
-                width: 10px;
-                height:  10px;
-            }
-
-            /* Track */
-            &::-webkit-scrollbar-track {
-            -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
-            -webkit-border-radius: 10px;
-            border-radius: 10px;
-            background: red;
-            }
-
-            /* Handle */
-            &::-webkit-scrollbar-thumb {
-            -webkit-border-radius: 10px;
-            border-radius: 10px;
-            background: rgba(255,0,0,0.8); 
-            -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
-            }
-            &::-webkit-scrollbar-thumb:window-inactive {
-            background: rgba(255,0,0,0.4); 
-            }
-
-        }
+ 
