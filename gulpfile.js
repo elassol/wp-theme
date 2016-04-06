@@ -12,6 +12,8 @@ var jshint       = require('gulp-jshint');
 var useref       = require('gulp-useref'); 
 var uglify       = require('gulp-uglify'); 
 var gulpIf       = require('gulp-if');
+var clean        = require('gulp-clean');
+
 
 
 
@@ -28,6 +30,10 @@ function customPlumber(errTitle) {
         })
     });
 }
+
+
+
+
 
 gulp.task('sass', function(){
     return  gulp.src('theme/sass/**/*.scss')
@@ -73,6 +79,7 @@ gulp.task('images', function(){
 
   .pipe(gulp.dest(imageDirectoryToOptimise));
 
+
 })
 
 
@@ -89,8 +96,8 @@ gulp.task('jshint', function() {
 gulp.task('useref', function(){
   return gulp.src('theme/*.html')
     .pipe(useref())
-    // Minifies only if it's a JavaScript file
-    .pipe(gulpIf('*.js', uglify()))
+    // // Minifies only if it's a JavaScript file
+    // .pipe(gulpIf('*.js', uglify()))
     .pipe(gulp.dest('theme/js'))
 });
 
@@ -103,5 +110,8 @@ gulp.task('watch', ['browserSync', 'sass', 'jshint'], function(){
     gulp.watch('theme/*.html', browserSync.reload);
     gulp.watch('theme/js/**/*.js', ['jshint']);
 })
+
+
+
 
 
