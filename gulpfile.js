@@ -15,7 +15,12 @@ var gulpIf       = require('gulp-if');
 var clean        = require('gulp-clean');
 
 
+// Project Configuration
 
+var project = 'my-theme';
+var build   = './build/';
+var dist    = './dist/';
+var source  = './src/';
 
 
 
