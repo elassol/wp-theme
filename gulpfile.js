@@ -13,6 +13,7 @@ var useref       = require('gulp-useref');
 var uglify       = require('gulp-uglify'); 
 var gulpIf       = require('gulp-if');
 var clean        = require('gulp-clean');
+var Handlebars   = require('handlebars');
 
 
 // Project Configuration
