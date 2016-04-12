@@ -14,14 +14,36 @@ var uglify       = require('gulp-uglify');
 var gulpIf       = require('gulp-if');
 var clean        = require('gulp-clean');
 var Handlebars   = require('handlebars');
+var cssnano      = require('gulp-cssnano');
+var concat       = require('gulp-concat');
 
 
 // Project Configuration
 
 var project = 'my-theme';
-var build   = './build/';
-var dist    = './dist/';
-var source  = './src/';
+
+var basePaths = {
+    src: 'theme/src/',
+    build: 'theme/build/',
+    dist: 'theme/dist/',
+    bower: 'theme/bower_components/'
+};
+
+var paths = {
+  images: {
+    src: basePaths.src + 'images/',
+    dist: basePaths.dist + 'images/'
+  },
+  scripts: {
+    src: basePaths.src + 'js/',
+    dist: basePaths.dist + 'js/'
+  },
+  styles: {
+    src: basePaths.src + 'sass/',
+    build: basePaths.build + 'css/',
+    dist: basePaths.dist + 'css/'
+  }
+};
 
 
 
@@ -42,7 +64,7 @@ function customPlumber(errTitle) {
 
 
 gulp.task('sass', function(){
-    return  gulp.src('theme/sass/**/*.scss')
+    return  gulp.src(paths.styles.src + '**/*.scss')
         .pipe(customPlumber('Error Running Sass'))
         // inititalizr sourcemap before anyother pluging that alter  files
         .pipe(sourcemaps.init())
@@ -52,8 +74,8 @@ gulp.task('sass', function(){
         .pipe(autoprefixer({
           browsers: ['ie 8-9', 'last 2 versions']
         }))
-        .pipe(sourcemaps.write())
-        .pipe(gulp.dest('theme/css'))
+        .pipe(sourcemaps.write('./'))
+        .pipe(gulp.dest(paths.styles.build))
         .pipe(browserSync.reload({
           stream: true
         }))
@@ -61,10 +83,34 @@ gulp.task('sass', function(){
 })
 
 
+gulp.task('sass:dist', function(){
+    return  gulp.src(paths.styles.src + '**/*.scss')
+        .pipe(customPlumber('Error Running Sass'))
+        // inititalizr sourcemap before anyother pluging that alter  files
+        .pipe(sourcemaps.init())
+        .pipe(sass({
+            precision: 2,
+            outputStyle: 'compressed'
+        }))
+        .pipe(autoprefixer({
+          browsers: ['ie 8-9', 'last 2 versions']
+        }))
+        .pipe(sourcemaps.write('./'))
+        .pipe(gulp.dest(paths.styles.dist))
+        .pipe(browserSync.reload({
+          stream: true
+        }))
+        
+})
+
+
+
+
+
 gulp.task('browserSync', function() {
   browserSync({
     server: {
-      baseDir: 'theme'
+      baseDir: basePaths.build
     },
 
     // Use Wordpress.dev instead of spinning up a server
@@ -88,8 +134,14 @@ gulp.task('images', function(){
 
 })
 
+// GULP SCRIPTS TASK CONACT
 
-// GULP USEREF FOR CONTACT SCRIPTS
+gulp.task('scripts', function(){
+  return gulp.src(paths.scripts.src + '**/*.js')
+    .pipe(concat('main_edu.js'))
+    .pipe(gulp.det('theme/build/js/main_edu.js'));
+});
+
 gulp.task('jshint', function() {
 
   return gulp.src('theme/js/**/*.js')
@@ -99,20 +151,31 @@ gulp.task('jshint', function() {
 });
 
 
-gulp.task('useref', function(){
-  return gulp.src('theme/*.html')
+// GULP USEREF FOR CONACT SCRIPTS ONLY WORKS IN HTML
+
+gulp.task('bundles', function(){
+  return gulp.src('theme/src/*.html')
     .pipe(useref())
     // // Minifies only if it's a JavaScript file
-    // .pipe(gulpIf('*.js', uglify()))
-    .pipe(gulp.dest('theme/js'))
+    .pipe(gulp.dest('theme/build'))
 });
+
+gulp.task('bundles:dist', function(){
+  return gulp.src('theme/src/*.html')
+    .pipe(useref())
+    // // Minifies only if it's a JavaScript file
+    .pipe(gulpIf('*.js', uglify()))
+    .pipe(gulp.dest('theme/build'))
+});
+
+
 
 
 
  
 gulp.task('watch', ['browserSync', 'sass', 'jshint'], function(){ 
-    gulp.watch('theme/sass/**/*.scss', ['sass']);
-    gulp.watch('theme/js/**/*.js', browserSync.reload);
+    gulp.watch(paths.styles.src + '**/*.scss', ['sass']);
+    gulp.watch(paths.scripts.src + '**/*.js', browserSync.reload);
     gulp.watch('theme/*.html', browserSync.reload);
     gulp.watch('theme/js/**/*.js', ['jshint']);
 })
