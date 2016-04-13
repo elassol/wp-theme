@@ -11,6 +11,7 @@
   "devDependencies": {
     "browser-sync": "^2.11.1",
     "del": "^2.2.0",
+    "fs": "0.0.2",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^3.1.0",
     "gulp-cache": "^0.4.3",
@@ -30,6 +31,7 @@
     "handlebars": "^4.0.5",
     "jshint": "^2.9.1",
     "jshint-stylish": "^2.1.0",
+    "run-sequence": "^1.1.5",
     "snyk": "^1.12.1"
   },
   "dependencies": {

@@ -17,6 +17,8 @@ var Handlebars   = require('handlebars');
 var cssnano      = require('gulp-cssnano');
 var concat       = require('gulp-concat');
 var del          = require('del');
+var runSequence  = require('run-sequence');
+var fs           = require('fs');
 
 
 
@@ -78,7 +80,7 @@ function customPlumber(errTitle) {
 
 
 // All the theme tasks in one
-gulp.task('theme', ['copyPhp', 'copyLanguages', 'copystyle']);
+gulp.task('theme:build', ['copyPhp', 'copyLanguages', 'copystyle']);
 
 
 // Copy php files
@@ -156,9 +158,11 @@ gulp.task('sass:dist', function(){
 
 gulp.task('browserSync', function() {
   browserSync({
-    notify: false,
 
+    notify: false,
     proxy: 'localhost:8080',
+    port: 8080,
+    open: false,
     watchOptions: {
       debounceDelay: 2000 // This introduces a small delay when watching for file change events to avoid triggering too many reloads
     }
@@ -267,11 +271,10 @@ gulp.task('fonts:dist', function(){
 // ==========================================================
 
 // cleaning process
-gulp.task('clean:build', function(cb){
+gulp.task('clean:build', function(callback){
     del([
       basePaths.build + '**/*'
-    ], cb);
-    console.log('Build Folder Cleaned');
+    ], callback);
 });
 
 
@@ -281,8 +284,8 @@ gulp.task('clean:build', function(cb){
 //  WATCH TASK
 // ==========================================================
  
-gulp.task('watch', ['browserSync', 'sass', 'jshint'], function(){ 
-    gulp.watch(paths.styles.src + '**/*.scss', ['sass']);
+gulp.task('watch', ['browserSync'], function(){ 
+    gulp.watch(basePaths.src + 'sass/**/*.scss', ['sass']);
     gulp.watch(paths.scripts.src + '**/*.js', browserSync.reload);
     gulp.watch('theme/*.html', browserSync.reload);
     gulp.watch('theme/js/**/*.js', ['jshint']);
@@ -295,7 +298,33 @@ gulp.task('watch', ['browserSync', 'sass', 'jshint'], function(){
 // ==========================================================
 
 // Consolidated dev pahse task for build folder
-gulp.task('default', ['clean:build','images:build', 'sass', 'scripts:build', 'fonts:build','theme','browserSync', 'watch'], function(){
+
+// gulp.task('default', function(done) {
+//   runSequence('clean:build',
+//     'images:build',
+//     'theme:build',
+//     'fonts:build',
+//     ['sass', 'scripts:build'],
+//     function(){
+//       console.log('here is a random thing');
+//       done();
+//     });
+// });
+
+  
+
+
+
+gulp.task('default', [
+  'clean:build',
+  'images:build',
+  'theme:build',
+  'fonts:build',
+  'scripts:build',
+  'sass',
+  'browserSync', 
+  'watch'
+  ], function(){
 });
 
 

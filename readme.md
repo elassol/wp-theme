@@ -1,11 +1,11 @@
-A WORDPRESS GULP STARTER KIT
-===========================
+# A WORDPRESS STARTER KIT: NODE, GULP ,BOWER, MAMP
 
 
-# symlink to link your theme to the wp-content folder of your wordpress installation 
+
+## symlink to link your theme to the wp-content folder of your wordpress installation 
 ln -s ~/path/to/wp-theme/ ~/path/to/local_install_wordpress
 
-# example:
+** example:**
 ln -s ~/dev/work/theme/ ~/dev/localhost/wp-content/theme/
 
 
