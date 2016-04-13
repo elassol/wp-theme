@@ -16,9 +16,13 @@ var clean        = require('gulp-clean');
 var Handlebars   = require('handlebars');
 var cssnano      = require('gulp-cssnano');
 var concat       = require('gulp-concat');
+var del          = require('del');
 
 
+
+// ==========================================================
 // Project Configuration
+// ==========================================================
 
 var project = 'my-theme';
 
@@ -32,10 +36,12 @@ var basePaths = {
 var paths = {
   images: {
     src: basePaths.src + 'images/',
+    build: basePaths.build + 'images/',
     dist: basePaths.dist + 'images/'
   },
   scripts: {
     src: basePaths.src + 'js/',
+    build: basePaths.build + 'js/',
     dist: basePaths.dist + 'js/'
   },
   styles: {
@@ -46,6 +52,10 @@ var paths = {
 };
 
 
+
+// ==========================================================
+// Pumbler error function
+// ==========================================================
 
 
 function customPlumber(errTitle) { 
@@ -62,6 +72,39 @@ function customPlumber(errTitle) {
 
 
 
+// ==========================================================
+// TASK COPY PHP FILES TO BUID
+// ==========================================================
+
+
+// All the theme tasks in one
+gulp.task('theme', ['copyPhp', 'copyLanguages', 'copystyle']);
+
+
+// Copy php files
+gulp.task('copyPhp', function(){
+  return gulp.src(basePaths.src + '**/*.php')
+    .pipe(gulp.dest(basePaths.build));
+    
+});
+
+// copy all lenguages files
+gulp.task('copyLanguages', function(){
+  return gulp.src(basePaths.src + 'languages/**/*')
+    .pipe(gulp.dest(basePaths.build + 'languages/'));
+});
+
+gulp.task('copystyle', function(){
+  return gulp.src(basePaths.src + 'style.css')
+    .pipe(gulp.dest(basePaths.build));
+});
+
+
+
+
+// ==========================================================
+// STYLES TASK
+// ==========================================================
 
 gulp.task('sass', function(){
     return  gulp.src(paths.styles.src + '**/*.scss')
@@ -69,6 +112,7 @@ gulp.task('sass', function(){
         // inititalizr sourcemap before anyother pluging that alter  files
         .pipe(sourcemaps.init())
         .pipe(sass({
+            includePaths: ['theme/bower_components'],
             precision: 2
         }))
         .pipe(autoprefixer({
@@ -89,6 +133,7 @@ gulp.task('sass:dist', function(){
         // inititalizr sourcemap before anyother pluging that alter  files
         .pipe(sourcemaps.init())
         .pipe(sass({
+            includePaths: ['theme/bower_components'],
             precision: 2,
             outputStyle: 'compressed'
         }))
@@ -104,42 +149,70 @@ gulp.task('sass:dist', function(){
 })
 
 
-
+// ==========================================================
+// browserSync TASK
+// ==========================================================
 
 
 gulp.task('browserSync', function() {
   browserSync({
-    server: {
-      baseDir: basePaths.build
-    },
+    notify: false,
 
-    // Use Wordpress.dev instead of spinning up a server
-    // proxy: wordpress.dev
+    proxy: 'localhost:8080',
+    watchOptions: {
+      debounceDelay: 2000 // This introduces a small delay when watching for file change events to avoid triggering too many reloads
+    }
+
   })
 })
 
-gulp.task('images', function(){
-  var imageDirectoryToOptimise = 'theme/images'
- 
 
-  gulp.src([imageDirectoryToOptimise + '/**/*.{jpg,png,jpeg}'])
-  .pipe(cache(imageOpt({
-      optimizationLevel: 5,
-      progressive: true,
-      interlaced: true
-  })))
 
-  .pipe(gulp.dest(imageDirectoryToOptimise));
+
+
+// ==========================================================
+// Images Task
+// ==========================================================
+
+
+// Copy changed images from the source folder to `build` (fast)
+gulp.task('images:build', function() {
+  return gulp.src(paths.images.src + '/**/*.{jpg,png,jpeg}')
+    .pipe(gulp.dest(paths.images.build));
+});
+
+// Optimize images in the `dist` folder (slow)
+gulp.task('images:dist', function(){
+
+  return gulp.src([paths.images.src + '/**/*.{jpg,png,jpeg}'])
+    .pipe(cache(imageOpt({
+        optimizationLevel: 5,
+        progressive: true,
+        interlaced: true
+    })))
+
+    .pipe(gulp.dest(paths.images.dist));
 
 
 })
 
-// GULP SCRIPTS TASK CONACT
 
-gulp.task('scripts', function(){
+
+// ==========================================================
+//  SCRIPTS TASK
+// ==========================================================
+
+
+gulp.task('scripts:build', function(){
   return gulp.src(paths.scripts.src + '**/*.js')
-    .pipe(concat('main_edu.js'))
-    .pipe(gulp.det('theme/build/js/main_edu.js'));
+    // .pipe(concat('main_edu.js'))
+    .pipe(gulp.dest(paths.scripts.build))
+});
+
+gulp.task('scripts:dist', function(){
+  return gulp.src(paths.scripts.src + '**/*.js')
+    // .pipe(concat('main_edu.js'))
+    .pipe(gulp.dest(paths.scripts.dist))
 });
 
 gulp.task('jshint', function() {
@@ -151,7 +224,7 @@ gulp.task('jshint', function() {
 });
 
 
-// GULP USEREF FOR CONACT SCRIPTS ONLY WORKS IN HTML
+// GULP USEREF FOR CONCACT SCRIPTS ONLY WORKS IN HTML
 
 gulp.task('bundles', function(){
   return gulp.src('theme/src/*.html')
@@ -171,7 +244,42 @@ gulp.task('bundles:dist', function(){
 
 
 
+// ==========================================================
+//  FONTS TASK
+// ==========================================================
 
+gulp.task('fonts:build', function(){
+  return gulp.src(basePaths.src + 'fonts/**.*')
+    .pipe(gulp.dest(basePaths.build + 'fonts'))
+});
+
+gulp.task('fonts:dist', function(){
+  return gulp.src(basePaths.src + 'fonts/**.*')
+    .pipe(gulp.dest(basePaths.dist + 'fonts'))
+});
+
+
+
+
+
+// ==========================================================
+//  CLEAN TASK
+// ==========================================================
+
+// cleaning process
+gulp.task('clean:build', function(cb){
+    del([
+      basePaths.build + '**/*'
+    ], cb);
+    console.log('Build Folder Cleaned');
+});
+
+
+
+
+// ==========================================================
+//  WATCH TASK
+// ==========================================================
  
 gulp.task('watch', ['browserSync', 'sass', 'jshint'], function(){ 
     gulp.watch(paths.styles.src + '**/*.scss', ['sass']);
@@ -179,6 +287,16 @@ gulp.task('watch', ['browserSync', 'sass', 'jshint'], function(){
     gulp.watch('theme/*.html', browserSync.reload);
     gulp.watch('theme/js/**/*.js', ['jshint']);
 })
+
+
+
+// ==========================================================
+//  BUILD TASK WITH WATCH
+// ==========================================================
+
+// Consolidated dev pahse task for build folder
+gulp.task('default', ['clean:build','images:build', 'sass', 'scripts:build', 'fonts:build','theme','browserSync', 'watch'], function(){
+});
 
 
 
