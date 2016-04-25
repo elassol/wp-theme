@@ -1,24 +1,25 @@
-var gulp         = require('gulp');
-var gutil        = require('gulp-util');
-var autoprefixer = require('gulp-autoprefixer');
-var sass         = require ('gulp-sass');
-var plumber      = require('gulp-plumber');
-var notify       = require('gulp-notify'); 
-var browserSync  = require('browser-sync'); 
-var sourcemaps   = require('gulp-sourcemaps');
-var cache        = require('gulp-cache');
-var imageOpt     = require('gulp-image-optimization');
-var jshint       = require('gulp-jshint');
-var useref       = require('gulp-useref'); 
-var uglify       = require('gulp-uglify'); 
-var gulpIf       = require('gulp-if');
-var clean        = require('gulp-clean');
-var Handlebars   = require('handlebars');
-var cssnano      = require('gulp-cssnano');
-var concat       = require('gulp-concat');
-var del          = require('del');
-var runSequence  = require('run-sequence');
-var fs           = require('fs');
+var gulp            = require('gulp');
+var gutil           = require('gulp-util');
+var autoprefixer    = require('gulp-autoprefixer');
+var sass            = require ('gulp-sass');
+var plumber         = require('gulp-plumber');
+var notify          = require('gulp-notify'); 
+var browserSync     = require('browser-sync'); 
+var sourcemaps      = require('gulp-sourcemaps');
+var cache           = require('gulp-cache');
+var imageOpt        = require('gulp-image-optimization');
+var jshint          = require('gulp-jshint');
+var useref          = require('gulp-useref'); 
+var uglify          = require('gulp-uglify'); 
+var gulpIf          = require('gulp-if');
+var clean           = require('gulp-clean');
+var Handlebars      = require('handlebars');
+var cssnano         = require('gulp-cssnano');
+var concat          = require('gulp-concat');
+var del             = require('del');
+var runSequence     = require('run-sequence');
+var fs              = require('fs');
+
 
 
 
@@ -52,6 +53,12 @@ var paths = {
     dist: basePaths.dist + 'css/'
   }
 };
+
+
+
+
+
+
 
 
 
@@ -122,7 +129,7 @@ gulp.task('sass', function(){
         }))
         .pipe(sourcemaps.write('./'))
         .pipe(gulp.dest(paths.styles.build))
-        .pipe(browserSync.reload({
+        .pipe(browserSync.reloads({
           stream: true
         }))
         
