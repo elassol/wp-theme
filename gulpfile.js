@@ -117,7 +117,9 @@ gulp.task('copystyle', function(){
 
 gulp.task('sass', function(){
     return  gulp.src(paths.styles.src + '**/*.scss')
+       
         .pipe(customPlumber('Error Running Sass'))
+
         // inititalizr sourcemap before anyother pluging that alter  files
         .pipe(sourcemaps.init())
         .pipe(sass({
@@ -129,9 +131,7 @@ gulp.task('sass', function(){
         }))
         .pipe(sourcemaps.write('./'))
         .pipe(gulp.dest(paths.styles.build))
-        .pipe(browserSync.reloads({
-          stream: true
-        }))
+        .pipe(browserSync.reload())
         
 })
 
@@ -151,9 +151,9 @@ gulp.task('sass:dist', function(){
         }))
         .pipe(sourcemaps.write('./'))
         .pipe(gulp.dest(paths.styles.dist))
-        .pipe(browserSync.reload({
-          stream: true
-        }))
+        // .pipe(browserSync.reload({
+        //   stream: true
+        // }))
         
 })
 
@@ -167,9 +167,9 @@ gulp.task('browserSync', function() {
   browserSync({
 
     notify: false,
-    proxy: 'localhost:8080',
-    port: 8080,
-    open: false,
+    proxy: 'localhost:8888',
+    port: 3000,
+    open: true,
     watchOptions: {
       debounceDelay: 2000 // This introduces a small delay when watching for file change events to avoid triggering too many reloads
     }
