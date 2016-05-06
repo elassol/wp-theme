@@ -1,24 +1,25 @@
-var gulp            = require('gulp');
-var gutil           = require('gulp-util');
-var autoprefixer    = require('gulp-autoprefixer');
-var sass            = require ('gulp-sass');
-var plumber         = require('gulp-plumber');
-var notify          = require('gulp-notify'); 
-var browserSync     = require('browser-sync'); 
-var sourcemaps      = require('gulp-sourcemaps');
-var cache           = require('gulp-cache');
-var imageOpt        = require('gulp-image-optimization');
-var jshint          = require('gulp-jshint');
-var useref          = require('gulp-useref'); 
-var uglify          = require('gulp-uglify'); 
-var gulpIf          = require('gulp-if');
-var clean           = require('gulp-clean');
-var Handlebars      = require('handlebars');
-var cssnano         = require('gulp-cssnano');
-var concat          = require('gulp-concat');
-var del             = require('del');
-var runSequence     = require('run-sequence');
-var fs              = require('fs');
+var gulp         = require('gulp');
+var gutil        = require('gulp-util');
+var autoprefixer = require('gulp-autoprefixer');
+var sass         = require ('gulp-sass');
+var plumber      = require('gulp-plumber');
+var notify       = require('gulp-notify'); 
+var browserSync  = require('browser-sync'); 
+var sourcemaps   = require('gulp-sourcemaps');
+var cache        = require('gulp-cache');
+var imageOpt     = require('gulp-image-optimization');
+var jshint       = require('gulp-jshint');
+var useref       = require('gulp-useref'); 
+var uglify       = require('gulp-uglify'); 
+var gulpIf       = require('gulp-if');
+var clean        = require('gulp-clean');
+var Handlebars   = require('handlebars');
+var cssnano      = require('gulp-cssnano');
+var concat       = require('gulp-concat');
+var del          = require('del');
+var runSequence  = require('run-sequence');
+var fs           = require('fs');
+var handlebars   = require('gulp-handlebars');
 
 
 
@@ -56,9 +57,14 @@ var paths = {
 
 
 
+// ==========================================================
+// Pumbler error function
+// ==========================================================
 
-
-
+gulp.task('handlebars', function() {
+  gulp.src('theme/templates/*.hbs')
+  pipe.handlebars())
+});
 
 
 
@@ -167,7 +173,7 @@ gulp.task('browserSync', function() {
   browserSync({
 
     notify: false,
-    proxy: 'localhost:8888',
+    proxy: 'http://localhost:8888/',
     port: 3000,
     open: true,
     watchOptions: {

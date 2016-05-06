@@ -78,13 +78,13 @@ h1 {
   opacity: 0.5; }
 
 .fat_header {
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(255, 0, 0, 0.8);
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex; }
 
 .page_wrapper {
-  max-width: 960px;
+  max-width: 100%;
   margin-left: auto;
   margin-right: auto;
   margin: 0 auto; }
@@ -94,7 +94,7 @@ h1 {
     clear: both; }
 
 body {
-  background-color: #fff; }
+  background-color: red; }
 
 .main-header {
   position: fixed;
