@@ -16,4 +16,18 @@ $accent-color: yellow;
    margin-left: auto;
    margin-right: auto;
  }
+
+
+ @mixin bp($point) {
+  @if $point == big-screen {
+    @media (max-width: 1600px) { @content; }
+  }
+  @else if $point == medium-screen {
+    @media (max-width: 1250px) { @content; }
+  }
+  @else if $point == mobile-screen {
+    @media (max-width: 600px)  { @content; }
+  }
+}
+
  

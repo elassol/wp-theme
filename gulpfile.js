@@ -94,7 +94,10 @@ gulp.task('theme:build', ['copyPhp', 'copyLanguages', 'copystyle']);
 // Copy php files
 gulp.task('copyPhp', function(){
   return gulp.src(basePaths.src + '**/*.php')
-    .pipe(gulp.dest(basePaths.build));
+    .pipe(customPlumber('Error PHP'))
+    .pipe(gulp.dest(basePaths.build))
+    .pipe(browserSync.reload())
+
     
 });
 
@@ -297,7 +300,7 @@ gulp.task('clean:build', function(callback){
 gulp.task('watch', ['browserSync'], function(){ 
     gulp.watch(basePaths.src + 'sass/**/*.scss', ['sass']);
     gulp.watch(paths.scripts.src + '**/*.js', browserSync.reload);
-    gulp.watch('theme/*.html', browserSync.reload);
+    gulp.watch(basePaths.src + '**/*.php', ['copyPhp'], browserSync.reload);
     gulp.watch('theme/js/**/*.js', ['jshint']);
 })
 
