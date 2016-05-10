@@ -13,13 +13,12 @@ var useref       = require('gulp-useref');
 var uglify       = require('gulp-uglify'); 
 var gulpIf       = require('gulp-if');
 var clean        = require('gulp-clean');
-var Handlebars   = require('handlebars');
 var cssnano      = require('gulp-cssnano');
 var concat       = require('gulp-concat');
 var del          = require('del');
 var runSequence  = require('run-sequence');
 var fs           = require('fs');
-var handlebars   = require('gulp-handlebars');
+
 
 
 
@@ -57,14 +56,9 @@ var paths = {
 
 
 
-// ==========================================================
-// Pumbler error function
-// ==========================================================
 
-gulp.task('handlebars', function() {
-  gulp.src('theme/templates/*.hbs')
-  pipe.handlebars())
-});
+
+
 
 
 
@@ -80,8 +74,9 @@ function customPlumber(errTitle) {
           title: errTitle || "Error running Gulp",
           message: "Error: <%= error.message %>",
           sound: "Glass"
-        })
-    });
+    })
+  });
+  this.emit('end');
 }
 
 
@@ -125,6 +120,7 @@ gulp.task('sass', function(){
     return  gulp.src(paths.styles.src + '**/*.scss')
        
         .pipe(customPlumber('Error Running Sass'))
+        
 
         // inititalizr sourcemap before anyother pluging that alter  files
         .pipe(sourcemaps.init())
@@ -138,6 +134,7 @@ gulp.task('sass', function(){
         .pipe(sourcemaps.write('./'))
         .pipe(gulp.dest(paths.styles.build))
         .pipe(browserSync.reload())
+        .pipe(notify({ message: 'Styles task complete' }))
         
 })
 
