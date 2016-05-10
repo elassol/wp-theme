@@ -119,7 +119,7 @@ gulp.task('copystyle', function(){
 gulp.task('sass', function(){
     return  gulp.src(paths.styles.src + '**/*.scss')
        
-        .pipe(customPlumber('Error Running Sass'))
+        .pipe(customPlumber('Error running Sass'))
         
 
         // inititalizr sourcemap before anyother pluging that alter  files
@@ -134,7 +134,7 @@ gulp.task('sass', function(){
         .pipe(sourcemaps.write('./'))
         .pipe(gulp.dest(paths.styles.build))
         .pipe(browserSync.reload())
-        .pipe(notify({ message: 'Styles task complete' }))
+
         
 })
 
