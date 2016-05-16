@@ -103,7 +103,7 @@ h1 {
   opacity: 0.5; }
 
 .fat_header {
-  color: rgba(255, 192, 203, 0.8);
+  color: rgba(255, 255, 255, 0.8);
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex; }
@@ -119,7 +119,7 @@ h1 {
     clear: both; }
 
 body {
-  background-color: pink; }
+  background-color: white; }
 
 .main-header {
   position: fixed;

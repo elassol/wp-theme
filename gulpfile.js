@@ -5,7 +5,6 @@ var sass         = require ('gulp-sass');
 var plumber      = require('gulp-plumber');
 var notify       = require('gulp-notify'); 
 var browserSync  = require('browser-sync'); 
-var sourcemaps   = require('gulp-sourcemaps');
 var cache        = require('gulp-cache');
 var imageOpt     = require('gulp-image-optimization');
 var jshint       = require('gulp-jshint');
@@ -17,6 +16,7 @@ var cssnano      = require('gulp-cssnano');
 var concat       = require('gulp-concat');
 var del          = require('del');
 var runSequence  = require('run-sequence');
+var sourcemaps   = require('gulp-sourcemaps');
 var fs           = require('fs');
 
 
