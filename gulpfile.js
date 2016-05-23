@@ -76,7 +76,7 @@ function customPlumber(errTitle) {
           sound: "Glass"
     })
   });
-  this.emit('end');
+
 }
 
 
@@ -136,7 +136,7 @@ gulp.task('sass', function(){
         }))
         .pipe(sourcemaps.write('./'))
         .pipe(gulp.dest(paths.styles.build))
-        .pipe(browserSync.reload())
+        .pipe(browserSync.reload({stream:true}))
 
         
 })
