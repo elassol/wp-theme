@@ -157,9 +157,7 @@ gulp.task('sass:dist', function(){
         }))
         .pipe(sourcemaps.write('./'))
         .pipe(gulp.dest(paths.styles.dist))
-        // .pipe(browserSync.reload({
-        //   stream: true
-        // }))
+        .pipe(browserSync.reload({stream:true}))
         
 })
 
