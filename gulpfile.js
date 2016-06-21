@@ -18,6 +18,8 @@ var del          = require('del');
 var runSequence  = require('run-sequence');
 var sourcemaps   = require('gulp-sourcemaps');
 var fs           = require('fs');
+var handlebars   = require('gulp-compile-handlebars');
+var rename       = require('gulp-rename');
 
 
 
@@ -88,14 +90,10 @@ function customPlumber(errTitle) {
 
 gulp.task('new', function() {
 
-  if (args.theme_name.length > 0) {
-
-    var theme = require('./template');
-    theme.create(args.theme_name);
-
-  } else {
-    console.log('Your campaign needs a name!');
-  }
+  gulp.src('templates/*.hbs')
+      .pipe(handlebars(args.theme_name))
+      .pipe(rename(fileName + ".css"))
+      .pipe(gulp.dest('./'));
 
 });
 
