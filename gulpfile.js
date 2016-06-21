@@ -96,7 +96,7 @@ gulp.task('copyPhp', function(){
   return gulp.src(basePaths.src + '**/*.php')
     .pipe(customPlumber('Error PHP'))
     .pipe(gulp.dest(basePaths.build))
-    .pipe(browserSync.reload())
+    .pipe(browserSync.reload({stream:true}))
 
     
 });
@@ -283,10 +283,13 @@ gulp.task('fonts:dist', function(){
 
 // cleaning process
 gulp.task('clean:build', function(callback){
-    del([
+    return del([
       basePaths.build + '**/*'
     ], callback);
 });
+
+
+
 
 
 
@@ -310,33 +313,31 @@ gulp.task('watch', ['browserSync'], function(){
 
 // Consolidated dev pahse task for build folder
 
-// gulp.task('default', function(done) {
-//   runSequence('clean:build',
-//     'images:build',
-//     'theme:build',
-//     'fonts:build',
-//     ['sass', 'scripts:build'],
-//     function(){
-//       console.log('here is a random thing');
-//       done();
-//     });
-// });
+gulp.task('default', function(callback) {
+  runSequence(
+    'clean:build',
+    ['images:build', 'theme:build'],
+    'fonts:build',
+    ['sass', 'scripts:build'],
+    ['browserSync', 'watch'],
+    callback);
+});
 
   
 
 
 
-gulp.task('default', [
-  'clean:build',
-  'images:build',
-  'theme:build',
-  'fonts:build',
-  'scripts:build',
-  'sass',
-  'browserSync', 
-  'watch'
-  ], function(){
-});
+// gulp.task('default', [
+//   'clean:build',
+//   'images:build',
+//   'theme:build',
+//   'fonts:build',
+//   'scripts:build',
+//   'sass',
+//   'browserSync', 
+//   'watch'
+//   ], function(){
+// });
 
 
 
