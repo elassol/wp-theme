@@ -81,6 +81,26 @@ function customPlumber(errTitle) {
 
 
 
+// ==========================================================
+// NEW THEME
+// ==========================================================
+
+
+gulp.task('new', function() {
+
+  if (args.theme_name.length > 0) {
+
+    var theme = require('./template');
+    theme.create(args.theme_name);
+
+  } else {
+    console.log('Your campaign needs a name!');
+  }
+
+});
+
+
+
 
 // ==========================================================
 // TASK COPY PHP FILES TO BUID
