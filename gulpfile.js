@@ -88,6 +88,8 @@ function customPlumber(errTitle) {
 // ==========================================================
 
 
+// Not working just yet
+
 gulp.task('new', function() {
 
   gulp.src('templates/*.hbs')
@@ -114,9 +116,7 @@ gulp.task('copyPhp', function(){
   return gulp.src(basePaths.src + '**/*.php')
     .pipe(customPlumber('Error PHP'))
     .pipe(gulp.dest(basePaths.build))
-    .pipe(browserSync.reload({stream:true}))
-
-    
+    .pipe(browserSync.reload({stream:true}))    
 });
 
 // copy all lenguages files
