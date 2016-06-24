@@ -65,8 +65,8 @@ html {
 /* Copy & Lists */
 p {
   line-height: 1.5rem;
-  margin-top: 1.5rem;
-  margin-bottom: 0; }
+  margin-top: 0;
+  margin-bottom: 1.5rem; }
 
 ul,
 ol {
@@ -98,19 +98,17 @@ h5,
 h6 {
   /* Change heading typefaces here */
   font-family: sans-serif;
-  margin-top: 1.5rem;
-  margin-bottom: 0;
+  margin-bottom: 1.5rem;
+  margin-top: 0;
   line-height: 1.5rem; }
 
 h1 {
   font-size: 4.242rem;
-  line-height: 4.5rem;
-  margin-top: 3rem; }
+  line-height: 4.5rem; }
 
 h2 {
   font-size: 2.828rem;
-  line-height: 3rem;
-  margin-top: 3rem; }
+  line-height: 3rem; }
 
 h3 {
   font-size: 1.414rem; }
@@ -159,8 +157,6 @@ code {
 
 .site-header {
   display: block;
-  width: 100%;
-  height: 100%;
   background: red; }
 
 p.eduardo {
@@ -171,6 +167,13 @@ p.eduardo {
   @media (min-width: 1024px) {
     p.eduardo {
       font-size: 20px; } }
+
+.screen-reader-text {
+  clip: rect(1px, 1px, 1px, 1px);
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden; }
 
 .testing {
   width: 71.43%; }
@@ -210,7 +213,9 @@ h1 {
     clear: both; }
 
 body {
-  background-color: #ededed; }
+  background-color: #ededed;
+  margin: 0;
+  padding: 0; }
 
 .main-header {
   position: fixed;
@@ -223,19 +228,52 @@ body {
   color: #fff;
   font-family: 'PT Sans', sans-serif; }
 
+header {
+  display: block;
+  width: 960px;
+  height: 308px;
+  text-align: center;
+  font-size: 72px;
+  line-height: 108px;
+  background: #335C7D;
+  color: #fff;
+  font-family: 'PT Sans', sans-serif;
+  transition: all 0.4s ease; }
+
 header.sticky {
+  position: fixed;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
   font-size: 24px;
   line-height: 48px;
   height: 48px;
-  background: #efc47D;
-  text-align: left;
-  padding-left: 20px;
-  transition: all 0.4s ease; }
+  width: 960px;
+  background: green;
+  text-align: left; }
 
 .hero-image {
   width: 100%;
   height: 50vh;
   background: yellow;
   border-top: 2px solid red; }
+
+.item-6 {
+  width: 12em; }
+
+.item-5 {
+  width: 10em; }
+
+.item-4 {
+  width: 8em; }
+
+.item-3 {
+  width: 6em; }
+
+.item-2 {
+  width: 4em; }
+
+.item-1 {
+  width: 2em; }
 
 /*# sourceMappingURL=main.css.map */

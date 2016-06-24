@@ -6,13 +6,15 @@ $(document).ready(function() {
 
     $(window).scroll(function() {
         if ($(this).scrollTop() > 1){  
-            $('header.main-header').addClass("sticky");
+            $('#masthead').addClass("sticky");
         } else{
-            $('header.main-header').removeClass("sticky");
+            $('#masthead').removeClass("sticky");
         }
     });
 
-    console.log('works')
+    console.log('it works');
+
+
     
 
 });

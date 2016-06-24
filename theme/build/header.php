@@ -27,7 +27,7 @@
 <body <?php body_class(); ?>>
 <div id="page" class="site-wrapper">
 
-	<!-- <a class="skip-link screen-reader-text" href="#main"><?php esc_html_e( 'Skip to content', 'lassodesigns' ); ?></a> -->
+	<a class="skip-link screen-reader-text" href="#main"><?php esc_html_e( 'Skip to content', 'lassodesigns' ); ?></a>
 
 	<header id="masthead" class="site-header" role="banner">
 		<div class="site-branding">
