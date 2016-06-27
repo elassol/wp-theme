@@ -1,0 +1,33 @@
+@mixin tablet {
+  @media (min-width: #{$tablet-width}) and (max-width: #{$desktop-width - 1px}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: #{$desktop-width}) {
+    @content;
+  }
+}
+
+@mixin wide {
+  @media (min-width: #{$wide-width}) {
+    @content;
+  }
+}
+
+
+
+
+
+// p.eduardo {
+//   font-size: 16px;
+
+//   @include tablet {
+//     font-size: 18px;
+//   }
+
+//   @include desktop {
+//     font-size: 20px;
+//   }
+// }

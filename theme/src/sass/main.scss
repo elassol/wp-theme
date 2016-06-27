@@ -1,8 +1,10 @@
 @import "reset-scss/reset.scss";
 @import "variables";
-@import "typography";
+@import "utils";
 @import "susy/sass/_susy.scss";
+@import "typography";
 @import "layout";
+@import "shame";
 
 
 // reset and susy are bower components 
@@ -94,38 +96,43 @@ body {
   font-family: 'PT Sans', sans-serif;
 }
 
-header{
-  display: block;
-    width: 960px;
-    height: 308px;
+// header {
+//     position: fixed;
+//     left: 0;
+//     right: 0;
+//     margin: 0 auto;
+
+//     display: block;
+//     width: 960px;
+//     height: 72px;
 
 
-    text-align: center;
-    font-size: 72px;
-    line-height: 108px;
+//     text-align: center;
+//     font-size: 72px;
+//     line-height: 108px;
     
-    background: #335C7D;
-    color: #fff;
-    font-family: 'PT Sans', sans-serif;
+//     background: #335C7D;
+//     color: #fff;
+//     font-family: 'PT Sans', sans-serif;
     
-    // set animation
-    -webkit-transition: all 0.4s ease;
-    transition: all 0.4s ease;
-}
+//     // set animation
+//     -webkit-transition: all 0.4s ease;
+//     transition: all 0.4s ease;
+// }
 
-header.sticky {
-    position: fixed;
-    left: 0;
-    right: 0;
-    margin: 0 auto;
-    font-size: 24px;
-    line-height: 48px;
-    height: 48px; 
-    width: 960px;
-    background: green;
-    text-align: left;
+// header.sticky {
+//     position: fixed;
+//     left: 0;
+//     right: 0;
+//     margin: 0 auto;
+//     font-size: 24px;
+//     line-height: 48px;
+//     height: 48px; 
+//     width: 960px;
+//     background: green;
+//     text-align: left;
     
-}
+// }
 
 .hero-image {
   width: 100%;

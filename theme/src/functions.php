@@ -155,3 +155,25 @@ require get_template_directory() . '/inc/customizer.php';
  * Load Jetpack compatibility file.
  */
 require get_template_directory() . '/inc/jetpack.php';
+
+
+/**
+ * Logo uploader
+ */
+function lassodesigns_customize_logo( $wp_customize ) {
+	$wp_customize->add_section( 'lassodesigns_logo_section' , array(
+    'title'       => __( 'Logo', 'lassodesigns' ),
+    'priority'    => 30,
+    'description' => 'Upload a logo to replace the default site name and description in the header',
+	) );
+
+    $wp_customize->add_setting( 'lassodesigns_logo' ); // Add setting for logo uploader
+         
+    // Add control for logo uploader (actual uploader)
+    $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'lassodesigns_logo', array(
+        'label'   => __( 'Logo', 'lassodesigns' ),
+        'section'  => 'lassodesigns_logo_section',
+        'settings' => 'lassodesigns_logo',
+    ) ) );
+}
+add_action( 'customize_register', 'lassodesigns_customize_logo' );
