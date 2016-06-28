@@ -1,3 +1,20 @@
+// -----------------------------------------
+//     Susy setup
+// -----------------------------------------
+
+/* Changing Susy default global settings */
+
+$susy: (
+  columns: 12,
+  gutters: .25,
+  container: 1024px,
+  /* Tells Susy to use border-box */
+  global-box-sizing: border-box,
+  debug: (image: show)
+);
+
+
+
 // ==========================================================
 // LAYOUT 
 // ==========================================================
@@ -13,9 +30,18 @@
 .site-header,
 .site-content,
 .site-footer {
-  @include container(960px);
+  @include container();
   margin: 0 auto;
 }
+
+.content-area {
+  @include span(8); 
+}
+
+.widget-area {
+  @include span(4 last); 
+}
+
 
 // ==========================================================
 // Header 
@@ -23,7 +49,9 @@
 
 .site-header {
     display: block;
-    background: grey;
+    width: 100%;
+    height: 72px;
+    // background: yellow;
 }
 
 .site-branding  {
@@ -31,6 +59,7 @@
   display: block;
   width: 25%;
   height: 72px;
+  // background: red;
 }
 
 .site-logo  {
@@ -41,7 +70,10 @@
 }
 
 .site-logo a {
-  line-height: 75px;
+  display: block;
+  width: 100%;
+  height: auto;
+  padding: 26px 0;
 }
 
 
@@ -49,7 +81,7 @@
 
 .site-banner {
   width: 100%;
-  height: 650px;
+  height: 450px;
   background: url('../images/banner-023.jpg') no-repeat center center;
   background-size: cover;
 } 
@@ -77,29 +109,36 @@
   display: block;
   width: 100%;
   height: auto;
+  overflow: hidden;
 }
 
 ul#primary-menu {
   float: right;
   display: block;
   margin: 0;
-  padding: 0;
+  padding: 19px 0;
 }
 
 ul#primary-menu li {
   display: inline-block;
   margin-left: 20px;
   float: left;
+
 }
 
 ul#primary-menu li a {
   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
   font-weight: bold;
-  font-size: 14px;
+  font-size: 16px;
   font-style: normal;
   font-variant: normal;
-  line-height: 20px;
+  line-height: 24px;
+  text-decoration: none;
 }
+
+// ==========================================================
+// Nav 
+// ==========================================================
 
 
 

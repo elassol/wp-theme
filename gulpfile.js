@@ -20,6 +20,7 @@ var sourcemaps   = require('gulp-sourcemaps');
 var fs           = require('fs');
 var handlebars   = require('gulp-compile-handlebars');
 var rename       = require('gulp-rename');
+var jscs         = require('gulp-jscs');
 
 
 
@@ -249,11 +250,21 @@ gulp.task('scripts:dist', function(){
     .pipe(gulp.dest(paths.scripts.dist))
 });
 
-gulp.task('jshint', function() {
+gulp.task('lint:js', function() {
 
-  return gulp.src('theme/js/**/*.js')
+  return gulp.src(paths.scripts.src + '**/*.js')
     .pipe(jshint())
-    .pipe(jshint.reporter('jshint-stylish'));
+    .pipe(jshint.reporter('jshint-stylish'))
+    .pipe(jshint.reporter('fail', {
+      ignoreWarning: true,
+      ignoreInfo: true
+    }))
+    // Adding JSCS to lint:js task
+    .pipe(jscs({
+      fix: true,
+      configPath: '.jscsrc'
+    }))
+    .pipe(gulp.dest(paths.scripts.src))
 
 });
 
