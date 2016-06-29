@@ -21,9 +21,11 @@ var fs           = require('fs');
 var handlebars   = require('gulp-compile-handlebars');
 var rename       = require('gulp-rename');
 var jscs         = require('gulp-jscs');
+var uglify       = require('gulp-uglify'); 
+var requireDir   = require('require-dir');
 
-
-
+// Require gulp tasks from task directory
+requireDir('./gulp/task');
 
 
 // ==========================================================
@@ -108,9 +110,10 @@ gulp.task('new', function() {
 // ==========================================================
 
 
-// All the theme tasks in one
-gulp.task('theme:build', ['copyPhp', 'copyLanguages', 'copystyle']);
+// All the theme tasks in one for build and dist folders
+gulp.task('theme:build', ['copyPhp', 'copyLanguages', 'copystyle', 'screenshot:build']);
 
+gulp.task('theme:dist', ['copyPhp:dist', 'copyLanguages:dist', 'copystyle:dist', 'screenshot:dist']);
 
 // Copy php files
 gulp.task('copyPhp', function(){
@@ -120,16 +123,46 @@ gulp.task('copyPhp', function(){
     .pipe(browserSync.reload({stream:true}))    
 });
 
+gulp.task('copyPhp:dist', function(){
+  return gulp.src(basePaths.src + '**/*.php')
+    .pipe(gulp.dest(basePaths.dist))  
+});
+
 // copy all lenguages files
 gulp.task('copyLanguages', function(){
   return gulp.src(basePaths.src + 'languages/**/*')
     .pipe(gulp.dest(basePaths.build + 'languages/'));
 });
 
+gulp.task('copyLanguages:dist', function(){
+  return gulp.src(basePaths.src + 'languages/**/*')
+    .pipe(gulp.dest(basePaths.dist + 'languages/'));
+});
+
+
+// copy style.css 
 gulp.task('copystyle', function(){
   return gulp.src(basePaths.src + 'style.css')
     .pipe(gulp.dest(basePaths.build));
 });
+
+gulp.task('copystyle:dist', function(){
+  return gulp.src(basePaths.src + 'style.css')
+    .pipe(gulp.dest(basePaths.dist));
+});
+
+// copy screenshot.png to theme root
+
+gulp.task('screenshot:build', function(){
+  return gulp.src(basePaths.src + 'screenshot.png')
+    .pipe(gulp.dest(basePaths.build))  
+});
+
+gulp.task('screenshot:dist', function(){
+  return gulp.src(basePaths.src + 'screenshot.png')
+    .pipe(gulp.dest(basePaths.dist))  
+});
+
 
 
 
@@ -211,14 +244,14 @@ gulp.task('browserSync', function() {
 
 // Copy changed images from the source folder to `build` (fast)
 gulp.task('images:build', function() {
-  return gulp.src(paths.images.src + '/**/*.{jpg,png,jpeg}')
+  return gulp.src(paths.images.src + '/**/*.{jpg,png,jpeg,gif}')
     .pipe(gulp.dest(paths.images.build));
 });
 
 // Optimize images in the `dist` folder (slow)
 gulp.task('images:dist', function(){
 
-  return gulp.src([paths.images.src + '/**/*.{jpg,png,jpeg}'])
+  return gulp.src([paths.images.src + '/**/*.{jpg,png,jpeg,gif}'])
     .pipe(cache(imageOpt({
         optimizationLevel: 5,
         progressive: true,
@@ -239,14 +272,21 @@ gulp.task('images:dist', function(){
 
 gulp.task('scripts:build', function(){
   return gulp.src(paths.scripts.src + '**/*.js')
-    // .pipe(concat('main_edu.js'))
+    .pipe(sourcemaps.init())
+    .pipe(concat('main.js'))
+    .pipe(sourcemaps.write())
     .pipe(gulp.dest(paths.scripts.build))
     .pipe(browserSync.reload({stream:true}))
 });
 
 gulp.task('scripts:dist', function(){
   return gulp.src(paths.scripts.src + '**/*.js')
-    // .pipe(concat('main_edu.js'))
+    .pipe(sourcemaps.init())
+    .pipe(concat('main.js'))
+    .pipe(sourcemaps.write())
+    .pipe(gulp.dest(paths.scripts.dist))
+    .pipe(rename('main.min.js'))
+    .pipe(uglify())
     .pipe(gulp.dest(paths.scripts.dist))
 });
 
@@ -271,20 +311,20 @@ gulp.task('lint:js', function() {
 
 // GULP USEREF FOR CONCACT SCRIPTS ONLY WORKS IN HTML
 
-gulp.task('bundles', function(){
-  return gulp.src('theme/src/*.html')
-    .pipe(useref())
-    // // Minifies only if it's a JavaScript file
-    .pipe(gulp.dest('theme/build'))
-});
+// gulp.task('bundles', function(){
+//   return gulp.src('theme/src/*.html')
+//     .pipe(useref())
+//     // // Minifies only if it's a JavaScript file
+//     .pipe(gulp.dest('theme/build'))
+// });
 
-gulp.task('bundles:dist', function(){
-  return gulp.src('theme/src/*.html')
-    .pipe(useref())
-    // // Minifies only if it's a JavaScript file
-    .pipe(gulpIf('*.js', uglify()))
-    .pipe(gulp.dest('theme/build'))
-});
+// gulp.task('bundles:dist', function(){
+//   return gulp.src('theme/src/*.html')
+//     .pipe(useref())
+//     // // Minifies only if it's a JavaScript file
+//     .pipe(gulpIf('*.js', uglify()))
+//     .pipe(gulp.dest('theme/build'))
+// });
 
 
 
@@ -311,10 +351,20 @@ gulp.task('fonts:dist', function(){
 //  CLEAN TASK
 // ==========================================================
 
+
+
+
 // cleaning process
 gulp.task('clean:build', function(callback){
     return del([
       basePaths.build + '**/*'
+    ], callback);
+});
+
+// cleaning process
+gulp.task('clean:dist', function(callback){
+    return del([
+      basePaths.dist + '**/*'
     ], callback);
 });
 
@@ -357,17 +407,7 @@ gulp.task('default', function(callback) {
 
 
 
-// gulp.task('default', [
-//   'clean:build',
-//   'images:build',
-//   'theme:build',
-//   'fonts:build',
-//   'scripts:build',
-//   'sass',
-//   'browserSync', 
-//   'watch'
-//   ], function(){
-// });
+
 
 
 
