@@ -167,51 +167,7 @@ gulp.task('screenshot:dist', function(){
 
 
 
-// ==========================================================
-// STYLES TASK
-// ==========================================================
 
-gulp.task('sass', function(){
-    return  gulp.src(paths.styles.src + '**/*.scss')
-       
-        .pipe(customPlumber('Error running Sass'))
-        
-
-        // inititalizr sourcemap before anyother pluging that alter  files
-        .pipe(sourcemaps.init())
-        .pipe(sass({
-            includePaths: ['theme/bower_components'],
-            precision: 2
-        }))
-        .pipe(autoprefixer({
-          browsers: ['ie 8-9', 'last 2 versions']
-        }))
-        .pipe(sourcemaps.write('./'))
-        .pipe(gulp.dest(paths.styles.build))
-        .pipe(browserSync.reload({stream:true}))
-
-        
-})
-
-
-gulp.task('sass:dist', function(){
-    return  gulp.src(paths.styles.src + '**/*.scss')
-        .pipe(customPlumber('Error Running Sass'))
-        // inititalizr sourcemap before anyother pluging that alter  files
-        .pipe(sourcemaps.init())
-        .pipe(sass({
-            includePaths: ['theme/bower_components'],
-            precision: 2,
-            outputStyle: 'compressed'
-        }))
-        .pipe(autoprefixer({
-          browsers: ['ie 8-9', 'last 2 versions']
-        }))
-        .pipe(sourcemaps.write('./'))
-        .pipe(gulp.dest(paths.styles.dist))
-        .pipe(browserSync.reload({stream:true}))
-        
-})
 
 
 // ==========================================================
