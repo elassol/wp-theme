@@ -45,6 +45,22 @@ table {
   border-collapse: collapse;
   border-spacing: 0; }
 
+html,
+body {
+  background-color: blue; }
+  @media (min-width: 768px) and (max-width: 1023px) {
+    html,
+    body {
+      background-color: green; } }
+  @media (min-width: 1024px) {
+    html,
+    body {
+      background-color: yellow; } }
+  @media (min-width: 1280px) {
+    html,
+    body {
+      background-color: red; } }
+
 html {
   font-size: 32px; }
 
@@ -153,26 +169,58 @@ aside.widget-area h2 {
 /* Changing Susy default global settings */
 .site-wrapper {
   width: 100%;
-  margin: 0 auto; }
+  margin: 0 auto;
+  overflow: hidden; }
 
 .site-header,
 .site-content,
 .site-footer {
-  max-width: 1024px;
-  margin-left: auto;
-  margin-right: auto;
-  background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 80%, transparent 80%);
-  background-size: 8.47%;
-  background-origin: content-box;
-  background-clip: content-box;
-  background-position: left top;
+  width: 100%;
   margin: 0 auto; }
-  .site-header:after,
-  .site-content:after,
-  .site-footer:after {
-    content: " ";
-    display: block;
-    clear: both; }
+  @media (min-width: 768px) and (max-width: 1023px) {
+    .site-header,
+    .site-content,
+    .site-footer {
+      width: 80%; } }
+  @media (min-width: 1024px) {
+    .site-header,
+    .site-content,
+    .site-footer {
+      max-width: 1024px;
+      margin-left: auto;
+      margin-right: auto;
+      background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 80%, transparent 80%);
+      background-size: 8.47%;
+      background-origin: content-box;
+      background-clip: content-box;
+      background-position: left top; }
+      .site-header:after,
+      .site-content:after,
+      .site-footer:after {
+        content: " ";
+        display: block;
+        clear: both; } }
+  @media (min-width: 1280px) {
+    .site-header,
+    .site-content,
+    .site-footer {
+      max-width: 1280px;
+      margin-left: auto;
+      margin-right: auto;
+      background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25) 80%, transparent 80%);
+      background-size: 8.47%;
+      background-origin: content-box;
+      background-clip: content-box;
+      background-position: left top; }
+      .site-header:after,
+      .site-content:after,
+      .site-footer:after {
+        content: " ";
+        display: block;
+        clear: both; } }
+
+.site-content {
+  width: 100%; }
 
 .content-area {
   width: 66.1%;
@@ -298,11 +346,6 @@ h1 {
     content: " ";
     display: block;
     clear: both; }
-
-body {
-  background-color: #ededed;
-  margin: 0;
-  padding: 0; }
 
 .main-header {
   position: fixed;

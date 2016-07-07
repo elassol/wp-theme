@@ -1,33 +1,66 @@
-@mixin tablet {
+
+
+// 1. Utilities
+// --------------
+
+@mixin clearfix() {
+    &:before,
+    &:after {
+        content: "";
+        display: table;
+    }
+    &:after {
+        clear: both;
+    }
+}
+
+@mixin truncateText($overflow: ellipsis){
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: $overflow; // values are: clip, ellipsis, or a string
+}
+
+
+// 2. Breakpoints
+// --------------
+
+@mixin bp-small {
   @media (min-width: #{$tablet-width}) and (max-width: #{$desktop-width - 1px}) {
     @content;
   }
 }
 
-@mixin desktop {
+@mixin bp-medium {
   @media (min-width: #{$desktop-width}) {
     @content;
   }
 }
 
-@mixin wide {
+@mixin bp-large {
   @media (min-width: #{$wide-width}) {
     @content;
   }
 }
 
 
+html,
+body {
+  background-color: blue;
+  @include bp-small { background-color: green; }
+  @include bp-medium { background-color: yellow; }
+  @include bp-large { background-color: red; }
+}
 
 
+// 3. Typography
+// --------------
 
-// p.eduardo {
-//   font-size: 16px;
+@function calculateRem($size) {
+  $remSize: $size / 16px;
+  @return $remSize * 1rem;
+}
 
-//   @include tablet {
-//     font-size: 18px;
-//   }
-
-//   @include desktop {
-//     font-size: 20px;
-//   }
-// }
+@mixin font-size($size) {
+  font-size: $size;
+  font-size: calculateRem($size);
+}

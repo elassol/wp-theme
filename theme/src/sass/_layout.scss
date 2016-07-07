@@ -24,14 +24,22 @@ $susy: (
 .site-wrapper {
     width: 100%;
     margin: 0 auto;
+    overflow: hidden;
 }
 
 
 .site-header,
 .site-content,
 .site-footer {
-  @include container();
+  width: 100%;
   margin: 0 auto;
+  @include bp-small { width:80%; }
+  @include bp-medium { @include container(); }
+  @include bp-large { @include container(1280px); }
+}
+
+.site-content {
+  width: 100%;
 }
 
 .content-area {
