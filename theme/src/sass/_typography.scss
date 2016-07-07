@@ -1,14 +1,13 @@
-html {
-    font-size: 32px;
-}
+
 
 p {
-  @include font-size(14px)
+  @include font-size(18px)
+  line-height: $base-line;
 }
 
 
 h1 {
-    @include font-size(32px)
+    @include font-size(32)
 }
 
 
@@ -22,7 +21,7 @@ h1 {
 html {
   /* Change default typefaces here */
   font-family: serif;
-  font-size: 137.5%;
+  font-size: 100%;
   -webkit-font-smoothing: antialiased;
 }
 /* Copy & Lists */

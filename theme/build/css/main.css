@@ -135,21 +135,19 @@ body {
   width: 1px;
   overflow: hidden; }
 
-html {
-  font-size: 32px; }
-
 p {
-  font-size: 14px;
-  font-size: 0.88rem; }
+  font-size: 18px;
+  font-size: 1.12rem;
+  line-height: 27px; }
 
 h1 {
-  font-size: 32px;
-  font-size: 2rem; }
+  font-size: 32;
+  font-size: 2/pxrem; }
 
 html {
   /* Change default typefaces here */
   font-family: serif;
-  font-size: 137.5%;
+  font-size: 100%;
   -webkit-font-smoothing: antialiased; }
 
 /* Copy & Lists */

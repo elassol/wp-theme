@@ -57,10 +57,12 @@ body {
 
 @function calculateRem($size) {
   $remSize: $size / 16px;
-  @return $remSize * 1rem;
+  @return #{$remSize}rem;
 }
 
 @mixin font-size($size) {
-  font-size: $size;
+  font-size: $size; //Fallback in px
   font-size: calculateRem($size);
 }
+
+
