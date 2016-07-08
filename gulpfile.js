@@ -382,6 +382,7 @@ gulp.task('clean:dist', function(callback){
 gulp.task('watch', ['browserSync'], function(){ 
     gulp.watch(basePaths.src + 'sass/**/*.scss', ['sass']);
     gulp.watch(basePaths.src + 'js/**/*.js', ['scripts:build']);
+    gulp.watch(basePaths.src + 'images/**/*.*', ['images:build']);
     gulp.watch(basePaths.src + '**/*.php', ['copyPhp'], browserSync.reload);
     gulp.watch('theme/js/**/*.js', ['jshint']);
 })

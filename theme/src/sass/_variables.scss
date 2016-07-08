@@ -1,6 +1,15 @@
 
+// -----------------------------------------
+//    Variables and Config
+// -----------------------------------------
 
-// Base colors
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+// 1. Base colors
 // --------------
 
 $base-color: #ededed;
@@ -9,7 +18,8 @@ $accent-color: yellow;
 $brand-80-color: rgba($base-color, 0.8);
 $accent-color: yellow;
 
-
+$grey-color: #666;
+$black-color: #333;
 
 // 2. Breakpoints
 // --------------
@@ -19,11 +29,34 @@ $desktop-width: 1024px;
 $wide-width:    1280px;
 
 
-// -----------------------------------------
-//    Typography
-// -----------------------------------------
 
-$base-font-size: 16px;
+// 3. Typography
+// --------------
+
+@font-face {
+    font-family: 'ralewaybold';
+    src: url('../fonts/raleway-extrabold-webfont.woff2') format('woff2'),
+         url('../fonts/raleway-extrabold-webfont.woff') format('woff'),
+         url('../fonts/raleway-extrabold-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: "noths3";
+    src: url("../fonts/noths_sans_3_regular-webfont.eot?") format("eot"),
+         url("../fonts/noths_sans_3_regular-webfont.woff2") format("woff2"),
+         url("../fonts/noths_sans_3_regular-webfont.woff") format("woff"),
+         url("../fonts/noths_sans_3_regular-webfont.ttf") format("truetype"),
+         url("../fonts/noths_sans_3_regular-webfont.svg#noths3") format("svg");
+    font-weight: normal;
+    font-style: normal;
+}
+
+$title-font-family: 'ralewaybold', "Helvetica Neue","HelveticaNeue", Arial, sans-serif;
+$base-font-family: 'noths3', "Helvetica Neue","HelveticaNeue", Arial, sans-serif;
+$base-font-size: 18; // base font size in PX
 $base-line: 27px;
 $scale: 1.5;
 

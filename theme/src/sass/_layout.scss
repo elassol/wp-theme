@@ -10,7 +10,7 @@ $susy: (
   container: 1024px,
   /* Tells Susy to use border-box */
   global-box-sizing: border-box,
-  debug: (image: show)
+  // debug: (image: show)
 );
 
 
@@ -20,6 +20,9 @@ $susy: (
 // ==========================================================
 
 
+.site-wrapper {
+  background: url('../images/bg-baseline.png') repeat top left;
+}
 
 .site-wrapper {
     width: 100%;
@@ -58,7 +61,7 @@ $susy: (
 .site-header {
     display: block;
     width: 100%;
-    height: 72px;
+    height: 80px;
     // background: yellow;
 }
 
@@ -70,18 +73,17 @@ $susy: (
   // background: red;
 }
 
-.site-logo  {
+.site-logo {
   display: block;
   width: 100%;
   height: auto;
-  
 }
 
 .site-logo a {
   display: block;
   width: 100%;
   height: auto;
-  padding: 26px 0;
+  padding: 30px 0;
 }
 
 
@@ -124,7 +126,7 @@ ul#primary-menu {
   float: right;
   display: block;
   margin: 0;
-  padding: 19px 0;
+  padding: 27px 0;
 }
 
 ul#primary-menu li {
@@ -135,13 +137,58 @@ ul#primary-menu li {
 }
 
 ul#primary-menu li a {
-  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
-  font-weight: bold;
-  font-size: 16px;
-  font-style: normal;
+  position: relative;
+  display: block;
+
+  font-family: $title-font-family; 
+  font-weight: normal;
   font-variant: normal;
-  line-height: 24px;
+  text-transform: uppercase;
+  @include font-size(16);
+  line-height: 27px;
   text-decoration: none;
+  color: $black-color;
+  
+  padding: 0 4px;
+
+}
+
+ul#primary-menu li a:hover {
+  color: $black-color;
+}
+
+ul#primary-menu li a:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: $black-color;
+  visibility: hidden;
+  -webkit-transform: scaleX(0);
+  transform: scaleX(0);
+  -webkit-transition: all 0.3s ease-in-out 0s;
+  transition: all 0.3s ease-in-out 0s;
+}
+
+ul#primary-menu li a:hover:before {
+  visibility: visible;
+  -webkit-transform: scaleX(1);
+  transform: scaleX(1);
+}
+
+ul#primary-menu li.current-menu-item a:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: $black-color;
+  visibility: visible;
+  -webkit-transform: scaleX(1);
+  transform: scaleX(1);
 }
 
 // ==========================================================

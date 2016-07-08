@@ -43,26 +43,27 @@
 }
 
 
-html,
-body {
-  background-color: blue;
-  @include bp-small { background-color: green; }
-  @include bp-medium { background-color: yellow; }
-  @include bp-large { background-color: red; }
-}
+// html,
+// body {
+//   background-color: blue;
+//   @include bp-small { background-color: green; }
+//   @include bp-medium { background-color: yellow; }
+//   @include bp-large { background-color: red; }
+// }
 
 
 // 3. Typography
 // --------------
 
 @function calculateRem($size) {
-  $remSize: $size / 16px;
+  $remSize: $size / $base-font-size;
   @return #{$remSize}rem;
 }
 
 @mixin font-size($size) {
-  font-size: $size; //Fallback in px
+  font-size: $size + px; //Fallback in px
   font-size: calculateRem($size);
+  line-height: ($size / $base-font-size) * 1.5;
 }
 
 

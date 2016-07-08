@@ -1,34 +1,28 @@
 
-
-p {
-  @include font-size(18px)
-  line-height: $base-line;
-}
-
-
-h1 {
-    @include font-size(32)
-}
-
-
-
 // -----------------------------------------
 //    Typography
 // -----------------------------------------
 
 
 
+
+// 1. Typography scale
+// ----------------------------
+
+
 html {
   /* Change default typefaces here */
-  font-family: serif;
-  font-size: 100%;
+  font-family: $base-font-family;
+  font-size: 112.5%;
   -webkit-font-smoothing: antialiased;
+
 }
+
 /* Copy & Lists */
+
 p {
-  line-height: 1.5rem;
-  margin-top: 0;
-  margin-bottom: 1.5rem;
+  @include font-size(18);
+  margin-bottom: $base-line;
 }
 ul,
 ol {
@@ -51,38 +45,39 @@ blockquote {
   margin-top: 1.5rem;
   margin-bottom: 1.5rem;
 }
-/* Headings */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+
+
+/*  Headings
+ *  h1 through h6 styling
+ *  Heading class lets you use one heading type for semantics
+ *  but style it as another heading type. */
+
+h1, h2, h3, h4, h5, h6 {
   /* Change heading typefaces here */
-  font-family: sans-serif;
-  margin-bottom: 1.5rem;
-  margin-top: 0;
-  line-height: 1.5rem;
+  font-family: $title-font-family;
+  margin-bottom: $base-line;
+  font-weight: normal;
+  font-style: normal;
 }
-h1 {
-  font-size: 4.242rem;
-  line-height: 4.5rem;
+
+h1, .h1 {
+  @include font-size(36);
+  line-height: 2.36;
 }
-h2 {
-  font-size: 2.828rem;
-  line-height: 3rem;
+h2, .h2 {
+  @include font-size(28);
 }
-h3 {
-  font-size: 1.414rem;
+h3, .h3 {
+  @include font-size(24);
 }
-h4 {
-  font-size: 0.707rem;
+h4, .h4 {
+  @include font-size(20);
 }
-h5 {
-  font-size: 0.4713333333333333rem;
+h5, .h5 {
+   @include font-size(18);
 }
-h6 {
-  font-size: 0.3535rem;
+h6, .h6 {
+   @include font-size(16);
 }
 /* Tables */
 table {
@@ -111,10 +106,7 @@ code {
 
 aside.widget-area {
     
-    h2 { 
-      @include font-size(16px)
-      font-weight: bold;
-    }
+
 
 }
 
