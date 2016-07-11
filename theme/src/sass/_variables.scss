@@ -68,6 +68,29 @@ $scale: 1.5;
  }
 
 
+ // ----------------------------------------
+// // ------ form settings ------
+// ----------------------------------------
+
+$form-margin-bottom: 1.529411765em;
+$form-btn-margin-bottom: 1.176470588em;
+$legend-label-margin-bottom: .294117647em;
+$legend-label-padding: 0;
+$input-text-select-line-height: 1.470588235;
+$input-text-select-color: #555555;
+$input-text-select-margin-bottom: 1.176470588em;
+$input-img-radio-checkbox-margin-bottom: .294117647em;
+$input-text-select-padding: .294117647em;
+$input-text-select-border: .071428571em solid #b8b8b8;
+$text-area-height: 12em;
+$input-focus-border: rgba(82, 168, 236, 0.8);
+$input-focus-shadow: rgba(82, 168, 236, 0.6);
+$input-border-radius: .176470588em;
+$input-box-shadow: inset 0 .071428571em .071428571em rgba(0, 0, 0, 0.075), 0 0 .470588235em $input-focus-shadow;
+$input-condensed-line-height: 1;
+$input-condensed-padding: .117647059em;
+
+
 
 
  

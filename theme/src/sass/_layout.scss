@@ -33,7 +33,8 @@ $susy: (
 
 .site-header,
 .site-content,
-.site-footer {
+.site-footer,
+.inner-wrapper {
   width: 100%;
   margin: 0 auto;
   @include bp-small { width:80%; }
