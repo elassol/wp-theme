@@ -55,37 +55,7 @@ $susy: (
 }
 
 
-// ==========================================================
-// Header 
-// ==========================================================
 
-.site-header {
-    display: block;
-    width: 100%;
-    height: 80px;
-    // background: yellow;
-}
-
-.site-branding  {
-  float: left;
-  display: block;
-  width: 25%;
-  height: 72px;
-  // background: red;
-}
-
-.site-logo {
-  display: block;
-  width: 100%;
-  height: auto;
-}
-
-.site-logo a {
-  display: block;
-  width: 100%;
-  height: auto;
-  padding: 30px 0;
-}
 
 
 // site banner
@@ -105,92 +75,7 @@ $susy: (
 }
 
 
-// ==========================================================
-// Nav 
-// ==========================================================
 
-
-.main-navigation {
-  display: inline-block;
-  width: 75%;
-  height: 72px;
-}
-
-.main-navigation > div {
-  display: block;
-  width: 100%;
-  height: auto;
-  overflow: hidden;
-}
-
-ul#primary-menu {
-  float: right;
-  display: block;
-  margin: 0;
-  padding: 27px 0;
-}
-
-ul#primary-menu li {
-  display: inline-block;
-  margin-left: 20px;
-  float: left;
-
-}
-
-ul#primary-menu li a {
-  position: relative;
-  display: block;
-
-  font-family: $title-font-family; 
-  font-weight: normal;
-  font-variant: normal;
-  text-transform: uppercase;
-  @include font-size(16);
-  line-height: 27px;
-  text-decoration: none;
-  color: $black-color;
-  
-  padding: 0 4px;
-
-}
-
-ul#primary-menu li a:hover {
-  color: $black-color;
-}
-
-ul#primary-menu li a:before {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 2px;
-  bottom: 0;
-  left: 0;
-  background-color: $black-color;
-  visibility: hidden;
-  -webkit-transform: scaleX(0);
-  transform: scaleX(0);
-  -webkit-transition: all 0.3s ease-in-out 0s;
-  transition: all 0.3s ease-in-out 0s;
-}
-
-ul#primary-menu li a:hover:before {
-  visibility: visible;
-  -webkit-transform: scaleX(1);
-  transform: scaleX(1);
-}
-
-ul#primary-menu li.current-menu-item a:before {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 2px;
-  bottom: 0;
-  left: 0;
-  background-color: $black-color;
-  visibility: visible;
-  -webkit-transform: scaleX(1);
-  transform: scaleX(1);
-}
 
 // ==========================================================
 // Nav 

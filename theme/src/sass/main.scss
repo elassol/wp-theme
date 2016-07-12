@@ -1,10 +1,10 @@
 @charset 'UTF-8';
 
-// 1. Configuration and helpers
+// 1. base
 @import "reset-scss/reset.scss";
-@import "variables";
-@import "utils";
-@import "helpers";
+@import "base/variables";
+@import "base/utils";
+@import "base/helpers";
 
 // 2. Vendors
 @import "susy/sass/_susy.scss";
@@ -15,6 +15,8 @@
 @import "shame";
 
 // 4. Layout-related sections
+@import "layout/header";
+@import "layout/menu";
 
 // 5. Components
 @import "forms";
@@ -35,18 +37,64 @@
 // -----------------------------------------
 
 
-// base.scss – contains global styles, such as resets, typography, colors, etc.
-// components.scss – contains each self-contained component in its own .scss partial
-// layout.scss – contains styling for larger layout components; e.g. nav, header, footer, etc.
-// pages.scss – contains page-specific styling, if necessary
-// themes.scss – contains styling for different themes
-// utils.scss – contains global mixins, functions, helper selectors, etc.
-// vendors.scss – contains 3rd-party styles, mixins, etc.
+// base – contains global styles, such as resets, typography, colors, etc.
+// components – contains each self-contained component in its own .scss partial
+// layout – contains styling for larger layout components; e.g. nav, header, footer, etc.
+// pages – contains page-specific styling, if necessary
+// themes – contains styling for different themes
+// utils – contains global mixins, functions, helper selectors, etc.
+// vendors – contains 3rd-party styles, mixins, etc.
 // main.scss – output file that brings together all of the above parts
 
 
 
-
+// sass/ 
+// | 
+// |– base/ 
+// |   |– _reset.scss       # Reset/normalize 
+// |   |– _typography.scss  # Typography rules 
+// |   ...                  # Etc… 
+// | 
+// |– components/ 
+// |   |– _buttons.scss     # Buttons 
+// |   |– _carousel.scss    # Carousel 
+// |   |– _cover.scss       # Cover 
+// |   |– _dropdown.scss    # Dropdown 
+// |   |– _navigation.scss  # Navigation 
+// |   ...                  # Etc… 
+// | 
+// |– helpers/ 
+// |   |– _variables.scss   # Sass Variables 
+// |   |– _functions.scss   # Sass Functions 
+// |   |– _mixins.scss      # Sass Mixins 
+// |   |– _helpers.scss     # Class & placeholders helpers 
+// |   ...                  # Etc… 
+// | 
+// |– layout/ 
+// |   |– _grid.scss        # Grid system 
+// |   |– _header.scss      # Header 
+// |   |– _footer.scss      # Footer 
+// |   |– _sidebar.scss     # Sidebar 
+// |   |– _forms.scss       # Forms 
+// |   ...                  # Etc… 
+// | 
+// |– pages/ 
+// |   |– _home.scss        # Home specific styles 
+// |   |– _contact.scss     # Contact specific styles 
+// |   ...                  # Etc… 
+// | 
+// |– themes/ 
+// |   |– _theme.scss       # Default theme 
+// |   |– _admin.scss       # Admin theme 
+// |   ...                  # Etc… 
+// | 
+// |– vendors/ 
+// |   |– _bootstrap.scss   # Bootstrap 
+// |   |– _jquery-ui.scss   # jQuery UI 
+// |   ...                  # Etc… 
+// | 
+// | 
+// `– main.scss             # primary Sass file 
 
 
 

@@ -6,10 +6,10 @@ $(document).ready(function() {
 
     $(window).scroll(function() {
         if ($(this).scrollTop() > 1) {
-          // $('#masthead').addClass("sticky");
+          $('#masthead').addClass("sticky");
           $('section.site-banner').addClass('sticky');
         } else {
-          // $('#masthead').removeClass("sticky");
+          $('#masthead').removeClass("sticky");
           $('section.site-banner').removeClass('sticky');
         }
       });

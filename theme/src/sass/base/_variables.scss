@@ -12,14 +12,26 @@ img {
 // 1. Base colors
 // --------------
 
-$base-color: #ededed;
-$brand-color: #454545;
-$accent-color: yellow;
-$brand-80-color: rgba($base-color, 0.8);
-$accent-color: yellow;
+$primarycolor: #ededed;
+$accentcolor: #454545;
+$secondarycolor: yellow;
+$foregroundcolor: black;
+$backgroundcolor: yellow;
 
 $grey-color: #666;
 $black-color: #333;
+
+// $theme-colors: (
+//   'primary': #fff, 
+//   'accent': #d98328,
+//   'secondary': #5a1321,
+//   'foreground': #191919,
+//   'background': #e9e9e9
+// );
+
+// @function theme-color($key: 'primary') {
+//   @return map-get($theme-colors, $key);
+// }
 
 // 2. Breakpoints
 // --------------
