@@ -11,10 +11,11 @@
 
 // 3. Base stuff
 @import "typography";
-@import "layout";
+
 @import "shame";
 
 // 4. Layout-related sections
+@import "layout/layout";
 @import "layout/header";
 @import "layout/menu";
 
