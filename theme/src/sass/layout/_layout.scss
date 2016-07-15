@@ -24,26 +24,30 @@ $susy: (
   background: url('../images/bg-baseline.png') repeat top left;
 }
 
-.site-wrapper {
+.site-wrapper,
+.site-header,
+.site-footer {
     width: 100%;
     margin: 0 auto;
     overflow: hidden;
 }
 
 
-.site-header,
+
 .site-content,
-.site-footer,
 .inner-wrapper {
-  width: 100%;
+  display: block;
+  width: 95%;
+  height: auto;
+  overflow: hidden;
   margin: 0 auto;
-  @include bp-small { width:80%; }
+  @include bp-small { width:90%; }
   @include bp-medium { @include container(); }
   @include bp-large { @include container(1280px); }
 }
 
-.site-content {
-  width: 100%;
+.site-footer {
+  background: black;
 }
 
 .content-area {
@@ -70,8 +74,8 @@ $susy: (
 .site-banner.sticky {
   // set animation
   height: 100px;
-    -webkit-transition: all 0.8s ease;
-    transition: all 0.8s ease;
+  -webkit-transition: all 0.8s ease;
+  transition: all 0.8s ease;
 }
 
 

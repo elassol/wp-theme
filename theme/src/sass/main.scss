@@ -17,10 +17,11 @@
 // 4. Layout-related sections
 @import "layout/layout";
 @import "layout/header";
+@import "layout/footer";
 @import "layout/menu";
 
 // 5. Components
-@import "forms";
+@import "components/forms";
 
 // 6. Page-specific styles
 
@@ -113,17 +114,17 @@
 //     Header 
 // -----------------------------------------
 
-.main-header {
-  position: fixed;
-  width: 100%;
-  text-align: center;
-  font-size: 72px;
-  line-height: 108px;
-  height: 108px;
-  background: #335C7D;
-  color: #fff;
-  font-family: 'PT Sans', sans-serif;
-}
+// .main-header {
+//   position: fixed;
+//   width: 100%;
+//   text-align: center;
+//   font-size: 72px;
+//   line-height: 108px;
+//   height: 108px;
+//   background: #335C7D;
+//   color: #fff;
+//   font-family: 'PT Sans', sans-serif;
+// }
 
 
 
