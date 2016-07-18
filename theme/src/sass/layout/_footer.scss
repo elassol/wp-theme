@@ -18,9 +18,21 @@
 
 }
 
-.site-info,
+.site-info p {
+    font-family: verdana;
+    @include font-size(11);
+    letter-spacing: 0.5px;
+    color: #666;
+}
+
 .site-info a {
-    color: white;
+    text-decoration: none;
+    color: #666;
+    
+    &:hover {
+        color: #999;
+    }
+
 }
 
 

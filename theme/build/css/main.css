@@ -418,9 +418,19 @@ header.site-header.sticky .site-logo a {
       float: left;
       margin-right: 1.69%; } }
 
-.site-info,
+.site-info p {
+  font-family: verdana;
+  font-size: 11px;
+  font-size: 0.61rem;
+  line-height: 0.92;
+  letter-spacing: 0.5px;
+  color: #666; }
+
 .site-info a {
-  color: white; }
+  text-decoration: none;
+  color: #666; }
+  .site-info a:hover {
+    color: #999; }
 
 .main-navigation {
   display: inline-block;

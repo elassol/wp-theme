@@ -42,11 +42,13 @@
         
 
 		<div class="site-info">
-			
-			
-			<p>Copyright &copy; <?php echo date("Y") ?></p>
-            <span class="sep"> | </span>
-            <a href="<?php echo esc_url( __( 'https://wordpress.org/', 'lassodesigns' ) ); ?>"><?php printf( esc_html__( 'Proudly powered by %s', 'lassodesigns' ), 'WordPress' ); ?></a>
+			<p>
+                <a href="<?php echo esc_url( __( 'https://wordpress.org/', 'lassodesigns' ) ); ?>">Lassodesigns LTD</a>
+               
+                &copy; <?php echo date("Y") ?>
+
+                 <span class="sep"> | </span> All Rights Reserved.
+            </p>
 		</div><!-- .site-info -->
 
         </div><!-- .inner-wrapper -->
