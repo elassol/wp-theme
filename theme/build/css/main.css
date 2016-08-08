@@ -468,6 +468,7 @@ ul#primary-menu li a {
   font-size: 0.89rem;
   line-height: 1.33;
   line-height: 27px;
+  letter-spacing: 2px;
   text-decoration: none;
   color: #333;
   padding: 0 4px; }

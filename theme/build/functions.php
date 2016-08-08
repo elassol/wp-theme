@@ -224,3 +224,69 @@ function lassodesign_hidden_theme( $r, $url ) {
 }
  
 add_filter( 'http_request_args', 'lassodesign_hidden_theme', 5, 2 );
+
+
+/*
+* Creating a function to create our CPT
+*/
+
+function lassodesigns_custom_post_type() {
+
+// Set UI labels for Custom Post Type
+	$labels = array(
+		'name'                => _x( 'Portfolio', 'Post Type General Name', 'lassodesigns' ),
+		'singular_name'       => _x( 'Work', 'Post Type Singular Name', 'lassodesigns' ),
+		'menu_name'           => __( 'Portfolio', 'lassodesigns' ),
+		'parent_item_colon'   => __( 'Parent Work', 'lassodesigns' ),
+		'all_items'           => __( 'All Works', 'lassodesigns' ),
+		'view_item'           => __( 'View Work', 'lassodesigns' ),
+		'add_new_item'        => __( 'Add New Work', 'lassodesigns' ),
+		'add_new'             => __( 'Add New', 'lassodesigns' ),
+		'edit_item'           => __( 'Edit Work', 'lassodesigns' ),
+		'update_item'         => __( 'Update Work', 'lassodesigns' ),
+		'search_items'        => __( 'Search Work', 'lassodesigns' ),
+		'not_found'           => __( 'Not Found', 'lassodesigns' ),
+		'not_found_in_trash'  => __( 'Not found in Trash', 'lassodesigns' ),
+	);
+	
+// Set other options for Custom Post Type
+	
+	$args = array(
+		'label'               => __( 'portfolio', 'lassodesigns' ),
+		'description'         => __( 'Work pieces portfolio', 'lassodesigns' ),
+		'labels'              => $labels,
+		// Features this CPT supports in Post Editor
+		'supports'            => array( 'title', 'editor', 'excerpt', 'author', 'thumbnail', 'comments', 'revisions', 'custom-fields', ),
+		// You can associate this CPT with a taxonomy or custom taxonomy. 
+		'taxonomies'          => array( 'genres' ),
+		/* A hierarchical CPT is like Pages and can have
+		* Parent and child items. A non-hierarchical CPT
+		* is like Posts.
+		*/	
+		'hierarchical'        => false,
+		'public'              => true,
+		'show_ui'             => true,
+		'show_in_menu'        => true,
+		'show_in_nav_menus'   => true,
+		'show_in_admin_bar'   => true,
+		'menu_position'       => 5,
+		'can_export'          => true,
+		'has_archive'         => true,
+		'exclude_from_search' => false,
+		'publicly_queryable'  => true,
+		'capability_type'     => 'post',
+	);
+	
+	// Registering your Custom Post Type
+	register_post_type( 'portfolio', $args );
+
+}
+
+/* Hook into the 'init' action so that the function
+* Containing our post type registration is not 
+* unnecessarily executed. 
+*/
+
+add_action( 'init', 'lassodesigns_custom_post_type', 0 );
+
+

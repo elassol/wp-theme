@@ -46,6 +46,7 @@ ul#primary-menu li a {
   text-transform: uppercase;
   @include font-size(16);
   line-height: 27px;
+  letter-spacing: 2px;
   text-decoration: none;
   color: $black-color;
   
