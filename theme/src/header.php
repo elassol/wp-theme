@@ -29,7 +29,29 @@
 <div id="page" class="site-wrapper">
 
 	<a class="skip-link screen-reader-text" href="#main"><?php esc_html_e( 'Skip to content', 'lassodesigns' ); ?></a>
+	
+	<div>
+		
 
+		
+		
+		<div>
+
+			<a href="<?php echo wp_logout_url( $redirect ); ?>">Not 
+				<?php 
+					$current_user = wp_get_current_user();
+
+					if ($current_user->user_firstname!="") {
+						echo $current_user->user_firstname;
+					} else {
+						echo $current_user->display_name;
+					}
+				?>? Log Out</a>
+		</div>
+		
+
+
+	</div>
 	<header id="masthead" class="site-header" role="banner">
 		<div class="inner-wrapper">
 			<div class="site-branding">
