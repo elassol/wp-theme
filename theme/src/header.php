@@ -48,6 +48,30 @@
 					}
 				?>? Log Out</a>
 		</div>
+
+		<?php $current_user = wp_get_current_user();?>
+		<a href="<?php echo wp_logout_url( $redirect ); ?>">Not <?php echo ($current_user->user_firstname!="")?$current_user->user_firstname:$current_user->display_name;?>? Log Out</a>
+
+		<?php $more=get_field('more_text');?>
+		<a class="cta-bttn" href="<?php echo get_permalink(); ?>">
+			<?php echo ($more!=''?$more:'Read More'); ?>
+		</a>
+
+		<h2>CTA example</h2>
+		<?php $more=get_field('more_text');?>
+		<a class="cta-bttn" href="<?php echo get_permalink(); ?>">
+			<?php
+				$more=get_field('more_text');
+
+				if ($more!="") {
+					echo $more;
+				} else {
+					echo "Read More";
+				}	
+			
+				
+			 ?>
+		 </a>
 		
 
 
