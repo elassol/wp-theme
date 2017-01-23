@@ -5,9 +5,7 @@ var mkdirp     = require('mkdirp');
 
 module.exports.create = function(name, author) {
 
-    // // create folder
-    // mkdirp("./" + name + "_theme");
-    // mkdirp("./" + name + "_theme/template-parts");
+
 
     // create style.css
     var contents = fs.readFileSync('./handlebars-templates/style.css.hbs', 'utf-8');
@@ -16,7 +14,10 @@ module.exports.create = function(name, author) {
 
     var safeName = convertNameToJavascriptSafeString(name);
 
-   
+    // create functions.php
+    var contents = fs.readFileSync('./handlebars-templates/functions.php.hbs', 'utf-8');
+    var output = HandleBars.compile(contents)({name: name, safeName: safeName});
+    fs.writeFile("./theme/src/functions.php", output);
 
 
 

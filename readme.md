@@ -3,13 +3,17 @@
 
 
 ## symlink to link your theme to the wp-content folder of your wordpress installation 
-ln -s ~/path/to/wp-theme/ ~/path/to/local_install_wordpress
 
-** example:**
-ln -s ~/dev/work/theme/ ~/dev/localhost/wp-content/theme/
+```
+ln -s ~/path/to/wp-theme/ ~/path/to/local_install_wordpress
+```
+
+* example:*
+* ln -s ~/dev/work/theme/ ~/dev/localhost/wp-content/theme/ *
 
 
 ## Create new theme Args:
+
 ```
 gulp new --name test-variable --author mylasso
 ```
