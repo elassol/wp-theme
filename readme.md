@@ -9,6 +9,11 @@ ln -s ~/path/to/wp-theme/ ~/path/to/local_install_wordpress
 ln -s ~/dev/work/theme/ ~/dev/localhost/wp-content/theme/
 
 
+## Create new theme Args:
+```
+gulp new --name test-variable --author mylasso
+```
+
 Will become a heading
 ==============
 
@@ -24,3 +29,4 @@ Will become a sub heading
 
     Add a indent and this will end up as code
 
+https://help.github.com/articles/basic-writing-and-formatting-syntax/

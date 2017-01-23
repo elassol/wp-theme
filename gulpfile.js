@@ -1,5 +1,6 @@
 var gulp         = require('gulp');
 var gutil        = require('gulp-util');
+var HandleBars   = require('handlebars');
 var autoprefixer = require('gulp-autoprefixer');
 var sass         = require ('gulp-sass');
 var plumber      = require('gulp-plumber');
@@ -8,7 +9,6 @@ var browserSync  = require('browser-sync');
 var cache        = require('gulp-cache');
 var imageOpt     = require('gulp-image-optimization');
 var jshint       = require('gulp-jshint');
-var useref       = require('gulp-useref'); 
 var uglify       = require('gulp-uglify'); 
 var gulpIf       = require('gulp-if');
 var clean        = require('gulp-clean');
@@ -17,12 +17,15 @@ var concat       = require('gulp-concat');
 var del          = require('del');
 var runSequence  = require('run-sequence');
 var sourcemaps   = require('gulp-sourcemaps');
+var args         = require('yargs').argv;
 var fs           = require('fs');
-var handlebars   = require('gulp-compile-handlebars');
 var rename       = require('gulp-rename');
 var jscs         = require('gulp-jscs');
 var uglify       = require('gulp-uglify'); 
 var requireDir   = require('require-dir');
+var glob         = require('glob');
+var args         = require('yargs').argv;
+
 
 // Require gulp tasks from task directory
 requireDir('./gulp/task');
@@ -96,10 +99,17 @@ function customPlumber(errTitle) {
 
 gulp.task('new', function() {
 
-  gulp.src('templates/*.hbs')
-      .pipe(handlebars(args.theme_name))
-      .pipe(rename(fileName + ".css"))
-      .pipe(gulp.dest('./'));
+  if (args.name && args.name.length > 0) {
+    var theme = require('./theme-gulp-helper');
+    theme.create(args.name, args.author);
+    if (args.watch === 'true') {
+      gulp.start('watch');
+    }
+  }
+  else {
+    console.log('Your Theme needs a name!');
+  }
+    
 
 });
 

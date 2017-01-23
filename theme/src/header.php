@@ -27,7 +27,7 @@
 <body <?php body_class(); ?>>
 
 <div id="page" class="site-wrapper">
-
+	<h1>test wp themne</h1>
 	<a class="skip-link screen-reader-text" href="#main"><?php esc_html_e( 'Skip to content', 'lassodesigns' ); ?></a>
 	
 	<div>
