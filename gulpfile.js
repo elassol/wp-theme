@@ -27,44 +27,11 @@ var glob         = require('glob');
 var args         = require('yargs').argv;
 
 
+// Require config global variables 
+require('./gulpconfig');
+
 // Require gulp tasks from task directory
 requireDir('./gulp/task');
-
-
-// ==========================================================
-// Project Configuration
-// ==========================================================
-
-var project = 'my-theme';
-
-var basePaths = {
-    src: 'theme/src/',
-    build: 'theme/build/',
-    dist: 'theme/dist/',
-    bower: 'theme/bower_components/'
-};
-
-var paths = {
-  images: {
-    src: basePaths.src + 'images/',
-    build: basePaths.build + 'images/',
-    dist: basePaths.dist + 'images/'
-  },
-  scripts: {
-    src: basePaths.src + 'js/',
-    build: basePaths.build + 'js/',
-    dist: basePaths.dist + 'js/'
-  },
-  styles: {
-    src: basePaths.src + 'sass/',
-    build: basePaths.build + 'css/',
-    dist: basePaths.dist + 'css/'
-  }
-};
-
-
-
-
 
 
 
@@ -94,8 +61,6 @@ function customPlumber(errTitle) {
 // NEW THEME
 // ==========================================================
 
-
-// Not working just yet
 
 gulp.task('new', function() {
 
@@ -376,6 +341,13 @@ gulp.task('clean:build', function(callback){
 gulp.task('clean:dist', function(callback){
     return del([
       basePaths.dist + '**/*'
+    ], callback);
+});
+
+// cleaning process
+gulp.task('clean:src', function(callback){
+    return del([
+      basePaths.src + '**/*'
     ], callback);
 });
 

@@ -9,7 +9,7 @@
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
- * @package lassodesigns
+ * @package mynameanotherexample
  */
 
 get_header(); ?>

@@ -6,7 +6,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
- * @package lassodesigns
+ * @package mynameanotherexample
  */
 
 ?><!DOCTYPE html>
@@ -27,8 +27,8 @@
 <body <?php body_class(); ?>>
 
 <div id="page" class="site-wrapper">
-	<h1>test wp themne</h1>
-	<a class="skip-link screen-reader-text" href="#main"><?php esc_html_e( 'Skip to content', 'lassodesigns' ); ?></a>
+
+	<a class="skip-link screen-reader-text" href="#main"><?php esc_html_e( 'Skip to content', 'mynameanotherexample' ); ?></a>
 	
 	<div>
 		
@@ -80,9 +80,9 @@
 		<div class="inner-wrapper">
 			<div class="site-branding">
 				
-				<?php if ( get_theme_mod( 'lassodesigns_logo' ) ) : ?>
+				<?php if ( get_theme_mod( 'mynameanotherexample_logo' ) ) : ?>
 				    <div class='site-logo'>
-				        <a href='<?php echo esc_url( home_url( '/' ) ); ?>' title='<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>' rel='home'><img src='<?php echo esc_url( get_theme_mod( 'lassodesigns_logo' ) ); ?>' alt='<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>'></a>
+				        <a href='<?php echo esc_url( home_url( '/' ) ); ?>' title='<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>' rel='home'><img src='<?php echo esc_url( get_theme_mod( 'mynameanotherexample_logo' ) ); ?>' alt='<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>'></a>
 				    </div>
 				<?php else : ?>
 				    <hgroup>
@@ -96,7 +96,7 @@
 			</div><!-- .site-branding -->
 
 			<nav id="site-navigation" class="main-navigation" role="navigation">
-				<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'lassodesigns' ); ?></button>
+				<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'mynameanotherexample' ); ?></button>
 				<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu' ) ); ?>
 			</nav><!-- #site-navigation -->
 		</div><!-- .inner-wrapper -->

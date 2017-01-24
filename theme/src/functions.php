@@ -1,13 +1,13 @@
 <?php
 /**
- * Myname functions and definitions.
+ * MyNameanotherexample functions and definitions.
  *
  * @link https://developer.wordpress.org/themes/basics/theme-functions/
  *
- * @package myname
+ * @package mynameanotherexample
  */
 
-if ( ! function_exists( 'myname_setup' ) ) :
+if ( ! function_exists( 'mynameanotherexample_setup' ) ) :
 /**
  * Sets up theme defaults and registers support for various WordPress features.
  *
@@ -15,14 +15,14 @@ if ( ! function_exists( 'myname_setup' ) ) :
  * runs before the init hook. The init hook is too late for some features, such
  * as indicating support for post thumbnails.
  */
-function myname_setup() {
+function mynameanotherexample_setup() {
     /*
      * Make theme available for translation.
      * Translations can be filed in the /languages/ directory.
-     * If you're building a theme based on myname, use a find and replace
-     * to change 'myname' to the name of your theme in all the template files.
+     * If you're building a theme based on mynameanotherexample, use a find and replace
+     * to change 'mynameanotherexample' to the name of your theme in all the template files.
      */
-    load_theme_textdomain( 'myname', get_template_directory() . '/languages' );
+    load_theme_textdomain( 'mynameanotherexample', get_template_directory() . '/languages' );
 
     // Add default posts and comments RSS feed links to head.
     add_theme_support( 'automatic-feed-links' );
@@ -44,7 +44,7 @@ function myname_setup() {
 
     // This theme uses wp_nav_menu() in one location.
     register_nav_menus( array(
-        'primary' => esc_html__( 'Primary', 'myname' ),
+        'primary' => esc_html__( 'Primary', 'mynameanotherexample' ),
     ) );
 
     /*
@@ -72,13 +72,13 @@ function myname_setup() {
     ) );
 
     // Set up the WordPress core custom background feature.
-    add_theme_support( 'custom-background', apply_filters( 'myname_custom_background_args', array(
+    add_theme_support( 'custom-background', apply_filters( 'mynameanotherexample_custom_background_args', array(
         'default-color' => 'ffffff',
         'default-image' => '',
     ) ) );
 }
 endif;
-add_action( 'after_setup_theme', 'myname_setup' );
+add_action( 'after_setup_theme', 'mynameanotherexample_setup' );
 
 /**
  * Set the content width in pixels, based on the theme's design and stylesheet.
@@ -87,21 +87,21 @@ add_action( 'after_setup_theme', 'myname_setup' );
  *
  * @global int $content_width
  */
-function myname_content_width() {
-    $GLOBALS['content_width'] = apply_filters( 'myname_content_width', 640 );
+function mynameanotherexample_content_width() {
+    $GLOBALS['content_width'] = apply_filters( 'mynameanotherexample_content_width', 640 );
 }
-add_action( 'after_setup_theme', 'myname_content_width', 0 );
+add_action( 'after_setup_theme', 'mynameanotherexample_content_width', 0 );
 
 /**
  * Register widget area.
  *
  * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
  */
-function myname_widgets_init() {
+function mynameanotherexample_widgets_init() {
     register_sidebar( array(
-        'name'          => esc_html__( 'Sidebar', 'myname' ),
+        'name'          => esc_html__( 'Sidebar', 'mynameanotherexample' ),
         'id'            => 'sidebar-1',
-        'description'   => esc_html__( 'Add widgets here.', 'myname' ),
+        'description'   => esc_html__( 'Add widgets here.', 'mynameanotherexample' ),
         'before_widget' => '<section id="%1$s" class="widget %2$s">',
         'after_widget'  => '</section>',
         'before_title'  => '<h2 class="widget-title">',
@@ -137,13 +137,13 @@ function myname_widgets_init() {
 
 
 }
-add_action( 'widgets_init', 'myname_widgets_init' );
+add_action( 'widgets_init', 'mynameanotherexample_widgets_init' );
 
 /**
  * Enqueue scripts and styles.
  */
-function myname_scripts() {
-    wp_enqueue_style( 'myname-style', get_stylesheet_uri() );
+function mynameanotherexample_scripts() {
+    wp_enqueue_style( 'mynameanotherexample-style', get_stylesheet_uri() );
 
     wp_enqueue_script( 'main', get_template_directory_uri() . '/js/main.js', array('jquery'),'',true );
 
@@ -158,7 +158,7 @@ function myname_scripts() {
         wp_enqueue_script('jquery');
     }
 }
-add_action( 'wp_enqueue_scripts', 'myname_scripts' );
+add_action( 'wp_enqueue_scripts', 'mynameanotherexample_scripts' );
 
 /**
  * Implement the Custom Header feature.
@@ -189,23 +189,23 @@ require get_template_directory() . '/inc/jetpack.php';
 /**
  * Logo uploader
  */
-function myname_customize_logo( $wp_customize ) {
-    $wp_customize->add_section( 'myname_logo_section' , array(
-    'title'       => __( 'Logo', 'myname' ),
+function mynameanotherexample_customize_logo( $wp_customize ) {
+    $wp_customize->add_section( 'mynameanotherexample_logo_section' , array(
+    'title'       => __( 'Logo', 'mynameanotherexample' ),
     'priority'    => 30,
     'description' => 'Upload a logo to replace the default site name and description in the header',
     ) );
 
-    $wp_customize->add_setting( 'myname_logo' ); // Add setting for logo uploader
+    $wp_customize->add_setting( 'mynameanotherexample_logo' ); // Add setting for logo uploader
          
     // Add control for logo uploader (actual uploader)
-    $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'myname_logo', array(
-        'label'   => __( 'Logo', 'myname' ),
-        'section'  => 'myname_logo_section',
-        'settings' => 'myname_logo',
+    $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'mynameanotherexample_logo', array(
+        'label'   => __( 'Logo', 'mynameanotherexample' ),
+        'section'  => 'mynameanotherexample_logo_section',
+        'settings' => 'mynameanotherexample_logo',
     ) ) );
 }
-add_action( 'customize_register', 'myname_customize_logo' );
+add_action( 'customize_register', 'mynameanotherexample_customize_logo' );
 
 
 /**
@@ -230,30 +230,30 @@ add_filter( 'http_request_args', 'lassodesign_hidden_theme', 5, 2 );
 * Creating a function to create our CPT
 */
 
-function myname_custom_post_type() {
+function mynameanotherexample_custom_post_type() {
 
 // Set UI labels for Custom Post Type
     $labels = array(
-        'name'                => _x( 'Portfolio', 'Post Type General Name', 'myname' ),
-        'singular_name'       => _x( 'Work', 'Post Type Singular Name', 'myname' ),
-        'menu_name'           => __( 'Portfolio', 'myname' ),
-        'parent_item_colon'   => __( 'Parent Work', 'myname' ),
-        'all_items'           => __( 'All Works', 'myname' ),
-        'view_item'           => __( 'View Work', 'myname' ),
-        'add_new_item'        => __( 'Add New Work', 'myname' ),
-        'add_new'             => __( 'Add New', 'myname' ),
-        'edit_item'           => __( 'Edit Work', 'myname' ),
-        'update_item'         => __( 'Update Work', 'myname' ),
-        'search_items'        => __( 'Search Work', 'myname' ),
-        'not_found'           => __( 'Not Found', 'myname' ),
-        'not_found_in_trash'  => __( 'Not found in Trash', 'myname' ),
+        'name'                => _x( 'Portfolio', 'Post Type General Name', 'mynameanotherexample' ),
+        'singular_name'       => _x( 'Work', 'Post Type Singular Name', 'mynameanotherexample' ),
+        'menu_name'           => __( 'Portfolio', 'mynameanotherexample' ),
+        'parent_item_colon'   => __( 'Parent Work', 'mynameanotherexample' ),
+        'all_items'           => __( 'All Works', 'mynameanotherexample' ),
+        'view_item'           => __( 'View Work', 'mynameanotherexample' ),
+        'add_new_item'        => __( 'Add New Work', 'mynameanotherexample' ),
+        'add_new'             => __( 'Add New', 'mynameanotherexample' ),
+        'edit_item'           => __( 'Edit Work', 'mynameanotherexample' ),
+        'update_item'         => __( 'Update Work', 'mynameanotherexample' ),
+        'search_items'        => __( 'Search Work', 'mynameanotherexample' ),
+        'not_found'           => __( 'Not Found', 'mynameanotherexample' ),
+        'not_found_in_trash'  => __( 'Not found in Trash', 'mynameanotherexample' ),
     );
     
 // Set other options for Custom Post Type
     
     $args = array(
-        'label'               => __( 'portfolio', 'myname' ),
-        'description'         => __( 'Work pieces portfolio', 'myname' ),
+        'label'               => __( 'portfolio', 'mynameanotherexample' ),
+        'description'         => __( 'Work pieces portfolio', 'mynameanotherexample' ),
         'labels'              => $labels,
         // Features this CPT supports in Post Editor
         'supports'            => array( 'title', 'editor', 'excerpt', 'author', 'thumbnail', 'comments', 'revisions', 'custom-fields', ),
@@ -287,6 +287,6 @@ function myname_custom_post_type() {
 * unnecessarily executed. 
 */
 
-add_action( 'init', 'myname_custom_post_type', 0 );
+add_action( 'init', 'mynameanotherexample_custom_post_type', 0 );
 
 
