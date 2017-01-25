@@ -27,11 +27,13 @@ var glob         = require('glob');
 var args         = require('yargs').argv;
 
 
+
+
 // Require config global variables 
 require('./gulpconfig');
 
 // Require gulp tasks from task directory
-requireDir('./gulp/task');
+// requireDir('./gulp/task');
 
 
 
@@ -62,7 +64,7 @@ function customPlumber(errTitle) {
 // ==========================================================
 
 
-gulp.task('new', function() {
+gulp.task('new', ['screenshot:src', 'sassnew', 'imagesnew', 'imagesnew:dist','imagesnew:build', 'fontsnew:src'], function() {
 
   if (args.name && args.name.length > 0) {
     var theme = require('./theme-gulp-helper');
@@ -74,6 +76,8 @@ gulp.task('new', function() {
   else {
     console.log('Your Theme needs a name!');
   }
+
+
     
 
 });
@@ -82,7 +86,7 @@ gulp.task('new', function() {
 
 
 // ==========================================================
-// TASK COPY PHP FILES TO BUID
+// TASK COPY PHP FILES TO DIST BUID
 // ==========================================================
 
 
@@ -139,7 +143,43 @@ gulp.task('screenshot:dist', function(){
     .pipe(gulp.dest(basePaths.dist))  
 });
 
+gulp.task('screenshot:src', function(){
+  return gulp.src('./handlebars-templates/screenshot.png')
+    .pipe(gulp.dest(basePaths.src))  
+});
 
+// copy sass files to src folder 
+
+gulp.task('sassnew', function(){
+  return gulp.src('./handlebars-templates/sass/**/*')
+    .pipe(gulp.dest(basePaths.src + 'sass'))  
+});
+
+
+// Move folder and images to SRC and build and dist
+
+gulp.task('imagesnew', function(){
+  return gulp.src('./handlebars-templates/images/**/*')
+    .pipe(gulp.dest(basePaths.src + 'images'))  
+});
+
+gulp.task('imagesnew:dist', function(){
+  return gulp.src('./handlebars-templates/images/**/*')
+    .pipe(gulp.dest(basePaths.dist + 'images'))  
+});
+
+gulp.task('imagesnew:build', function(){
+  return gulp.src('./handlebars-templates/images/**/*')
+    .pipe(gulp.dest(basePaths.build + 'images'))  
+});
+
+
+// Move fonts folder and contents from template to SRC folder
+
+gulp.task('fontsnew:src', function(){
+  return gulp.src('./handlebars-templates/fonts/**/*')
+    .pipe(gulp.dest(basePaths.src + 'fonts'))  
+});
 
 
 
@@ -352,7 +392,14 @@ gulp.task('clean:src', function(callback){
 });
 
 
-
+// cleaning process
+gulp.task('clean:all', function(callback){
+    return del([
+      basePaths.build + '**/*',
+      basePaths.dist + '**/*',
+      basePaths.src + '**/*'
+    ], callback);
+});
 
 
 

@@ -148,6 +148,15 @@ module.exports.create = function(name, author) {
     fs.writeFile(basePaths.src + 'languages/readme.txt', output);
 
 
+    // add JS files
+    var contents = fs.readFileSync('./handlebars-templates/js/main.js.hbs', 'utf-8');
+    var output = HandleBars.compile(contents)({name: name, safeName: safeName});
+    fs.writeFile(basePaths.src + 'js/main.js', output);   
+
+   
+
+   
+
     
 
     console.log(gutil.colors.green('Success New ' + safeName + ' Theme'));
