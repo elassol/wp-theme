@@ -1,0 +1,39 @@
+
+// ==========================================================
+// Footer main layout 
+// ==========================================================
+
+
+.widget-footer {
+     @include container(100%);
+     .widget-wrapper { width: 100%; }
+    
+
+    @include bp-medium {
+        .widget-wrapper { @include span(4); color: white }   
+        .widget-wrapper:last-child { @include span(4 last); }
+    }
+
+    @include bp-large {  .widget-wrapper { @include span(4); } }
+
+}
+
+.site-info p {
+    font-family: verdana;
+    @include font-size(11);
+    letter-spacing: 0.5px;
+    color: #666;
+}
+
+.site-info a {
+    text-decoration: none;
+    color: #666;
+    
+    &:hover {
+        color: #999;
+    }
+
+}
+
+
+

@@ -1,0 +1,91 @@
+// -----------------------------------------
+//     Susy setup
+// -----------------------------------------
+
+/* Changing Susy default global settings */
+
+$susy: (
+  columns: 12,
+  gutters: .25,
+  container: 1024px,
+  /* Tells Susy to use border-box */
+  global-box-sizing: border-box,
+  // debug: (image: show)
+);
+
+
+
+// ==========================================================
+// LAYOUT 
+// ==========================================================
+
+
+.site-wrapper {
+  background: url('../images/bg-baseline.png') repeat top left;
+}
+
+.site-wrapper,
+.site-header,
+.site-footer {
+    width: 100%;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+
+
+.site-content,
+.inner-wrapper {
+  display: block;
+  width: 95%;
+  height: auto;
+  overflow: hidden;
+  margin: 0 auto;
+  @include bp-small { width:90%; }
+  @include bp-medium { @include container(); }
+  @include bp-large { @include container(1280px); }
+}
+
+.site-footer {
+  background: black;
+}
+
+.content-area {
+  @include span(8); 
+}
+
+.widget-area {
+  @include span(4 last); 
+}
+
+
+
+
+
+// site banner
+
+.site-banner {
+  width: 100%;
+  height: 450px;
+  background: url('../images/banner-023.jpg') no-repeat center center;
+  background-size: cover;
+} 
+
+.site-banner.sticky {
+  // set animation
+  height: 100px;
+  -webkit-transition: all 0.8s ease;
+  transition: all 0.8s ease;
+}
+
+
+.site-banner .inner-wrapper h3, 
+.site-banner .inner-wrapper h1 { display:none;} 
+
+// ==========================================================
+// Nav 
+// ==========================================================
+
+
+
+
