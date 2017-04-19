@@ -205,12 +205,12 @@ msgstr ""
 
 #. Theme URI of the plugin/theme
 #@ _s
-msgid "http://www.lassodesign.com/"
+msgid "http://www.trest.com/"
 msgstr ""
 
 #. Description of the plugin/theme
 #@ _s
-msgid "Hi. I'm a starter theme called lassodesign starter theme, if you like. I'm a theme meant for hacking so don't use me as a <em>Parent Theme</em>. Instead try turning me into the next, most awesome, WordPress theme out there. That's what I'm here for."
+msgid "Hi. I'm a starter theme called trest starter theme, if you like. I'm a theme meant for hacking so don't use me as a <em>Parent Theme</em>. Instead try turning me into the next, most awesome, WordPress theme out there. That's what I'm here for."
 msgstr ""
 
 #. Author of the plugin/theme

@@ -20,6 +20,11 @@ $susy: (
 // ==========================================================
 
 
+.page_wrapper {
+     @include container;
+     margin: 0 auto;
+}
+
 .site-wrapper {
   background: url('../images/bg-baseline.png') repeat top left;
 }

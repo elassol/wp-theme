@@ -1,13 +1,13 @@
 <?php
 /**
- * lassodesign functions and definitions.
+ * trest functions and definitions.
  *
  * @link https://developer.wordpress.org/themes/basics/theme-functions/
  *
- * @package lassodesign
+ * @package trest
  */
 
-if ( ! function_exists( 'lassodesign_setup' ) ) :
+if ( ! function_exists( 'trest_setup' ) ) :
 /**
  * Sets up theme defaults and registers support for various WordPress features.
  *
@@ -15,14 +15,14 @@ if ( ! function_exists( 'lassodesign_setup' ) ) :
  * runs before the init hook. The init hook is too late for some features, such
  * as indicating support for post thumbnails.
  */
-function lassodesign_setup() {
+function trest_setup() {
     /*
      * Make theme available for translation.
      * Translations can be filed in the /languages/ directory.
-     * If you're building a theme based on lassodesign, use a find and replace
-     * to change 'lassodesign' to the name of your theme in all the template files.
+     * If you're building a theme based on trest, use a find and replace
+     * to change 'trest' to the name of your theme in all the template files.
      */
-    load_theme_textdomain( 'lassodesign', get_template_directory() . '/languages' );
+    load_theme_textdomain( 'trest', get_template_directory() . '/languages' );
 
     // Add default posts and comments RSS feed links to head.
     add_theme_support( 'automatic-feed-links' );
@@ -44,7 +44,7 @@ function lassodesign_setup() {
 
     // This theme uses wp_nav_menu() in one location.
     register_nav_menus( array(
-        'primary' => esc_html__( 'Primary', 'lassodesign' ),
+        'primary' => esc_html__( 'Primary', 'trest' ),
     ) );
 
     /*
@@ -72,13 +72,13 @@ function lassodesign_setup() {
     ) );
 
     // Set up the WordPress core custom background feature.
-    add_theme_support( 'custom-background', apply_filters( 'lassodesign_custom_background_args', array(
+    add_theme_support( 'custom-background', apply_filters( 'trest_custom_background_args', array(
         'default-color' => 'ffffff',
         'default-image' => '',
     ) ) );
 }
 endif;
-add_action( 'after_setup_theme', 'lassodesign_setup' );
+add_action( 'after_setup_theme', 'trest_setup' );
 
 /**
  * Set the content width in pixels, based on the theme's design and stylesheet.
@@ -87,21 +87,21 @@ add_action( 'after_setup_theme', 'lassodesign_setup' );
  *
  * @global int $content_width
  */
-function lassodesign_content_width() {
-    $GLOBALS['content_width'] = apply_filters( 'lassodesign_content_width', 640 );
+function trest_content_width() {
+    $GLOBALS['content_width'] = apply_filters( 'trest_content_width', 640 );
 }
-add_action( 'after_setup_theme', 'lassodesign_content_width', 0 );
+add_action( 'after_setup_theme', 'trest_content_width', 0 );
 
 /**
  * Register widget area.
  *
  * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
  */
-function lassodesign_widgets_init() {
+function trest_widgets_init() {
     register_sidebar( array(
-        'name'          => esc_html__( 'Sidebar', 'lassodesign' ),
+        'name'          => esc_html__( 'Sidebar', 'trest' ),
         'id'            => 'sidebar-1',
-        'description'   => esc_html__( 'Add widgets here.', 'lassodesign' ),
+        'description'   => esc_html__( 'Add widgets here.', 'trest' ),
         'before_widget' => '<section id="%1$s" class="widget %2$s">',
         'after_widget'  => '</section>',
         'before_title'  => '<h2 class="widget-title">',
@@ -137,13 +137,13 @@ function lassodesign_widgets_init() {
 
 
 }
-add_action( 'widgets_init', 'lassodesign_widgets_init' );
+add_action( 'widgets_init', 'trest_widgets_init' );
 
 /**
  * Enqueue scripts and styles.
  */
-function lassodesign_scripts() {
-    wp_enqueue_style( 'lassodesign-style', get_stylesheet_uri() );
+function trest_scripts() {
+    wp_enqueue_style( 'trest-style', get_stylesheet_uri() );
 
     wp_enqueue_script( 'main', get_template_directory_uri() . '/js/main.js', array('jquery'),'',true );
 
@@ -158,7 +158,7 @@ function lassodesign_scripts() {
         wp_enqueue_script('jquery');
     }
 }
-add_action( 'wp_enqueue_scripts', 'lassodesign_scripts' );
+add_action( 'wp_enqueue_scripts', 'trest_scripts' );
 
 /**
  * Implement the Custom Header feature.
@@ -189,23 +189,23 @@ require get_template_directory() . '/inc/jetpack.php';
 /**
  * Logo uploader
  */
-function lassodesign_customize_logo( $wp_customize ) {
-    $wp_customize->add_section( 'lassodesign_logo_section' , array(
-    'title'       => __( 'Logo', 'lassodesign' ),
+function trest_customize_logo( $wp_customize ) {
+    $wp_customize->add_section( 'trest_logo_section' , array(
+    'title'       => __( 'Logo', 'trest' ),
     'priority'    => 30,
     'description' => 'Upload a logo to replace the default site name and description in the header',
     ) );
 
-    $wp_customize->add_setting( 'lassodesign_logo' ); // Add setting for logo uploader
+    $wp_customize->add_setting( 'trest_logo' ); // Add setting for logo uploader
          
     // Add control for logo uploader (actual uploader)
-    $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'lassodesign_logo', array(
-        'label'   => __( 'Logo', 'lassodesign' ),
-        'section'  => 'lassodesign_logo_section',
-        'settings' => 'lassodesign_logo',
+    $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'trest_logo', array(
+        'label'   => __( 'Logo', 'trest' ),
+        'section'  => 'trest_logo_section',
+        'settings' => 'trest_logo',
     ) ) );
 }
-add_action( 'customize_register', 'lassodesign_customize_logo' );
+add_action( 'customize_register', 'trest_customize_logo' );
 
 
 /**
@@ -230,30 +230,30 @@ add_filter( 'http_request_args', 'lassodesign_hidden_theme', 5, 2 );
 * Creating a function to create our CPT
 */
 
-function lassodesign_custom_post_type() {
+function trest_custom_post_type() {
 
 // Set UI labels for Custom Post Type
     $labels = array(
-        'name'                => _x( 'Portfolio', 'Post Type General Name', 'lassodesign' ),
-        'singular_name'       => _x( 'Work', 'Post Type Singular Name', 'lassodesign' ),
-        'menu_name'           => __( 'Portfolio', 'lassodesign' ),
-        'parent_item_colon'   => __( 'Parent Work', 'lassodesign' ),
-        'all_items'           => __( 'All Works', 'lassodesign' ),
-        'view_item'           => __( 'View Work', 'lassodesign' ),
-        'add_new_item'        => __( 'Add New Work', 'lassodesign' ),
-        'add_new'             => __( 'Add New', 'lassodesign' ),
-        'edit_item'           => __( 'Edit Work', 'lassodesign' ),
-        'update_item'         => __( 'Update Work', 'lassodesign' ),
-        'search_items'        => __( 'Search Work', 'lassodesign' ),
-        'not_found'           => __( 'Not Found', 'lassodesign' ),
-        'not_found_in_trash'  => __( 'Not found in Trash', 'lassodesign' ),
+        'name'                => _x( 'Portfolio', 'Post Type General Name', 'trest' ),
+        'singular_name'       => _x( 'Work', 'Post Type Singular Name', 'trest' ),
+        'menu_name'           => __( 'Portfolio', 'trest' ),
+        'parent_item_colon'   => __( 'Parent Work', 'trest' ),
+        'all_items'           => __( 'All Works', 'trest' ),
+        'view_item'           => __( 'View Work', 'trest' ),
+        'add_new_item'        => __( 'Add New Work', 'trest' ),
+        'add_new'             => __( 'Add New', 'trest' ),
+        'edit_item'           => __( 'Edit Work', 'trest' ),
+        'update_item'         => __( 'Update Work', 'trest' ),
+        'search_items'        => __( 'Search Work', 'trest' ),
+        'not_found'           => __( 'Not Found', 'trest' ),
+        'not_found_in_trash'  => __( 'Not found in Trash', 'trest' ),
     );
     
 // Set other options for Custom Post Type
     
     $args = array(
-        'label'               => __( 'portfolio', 'lassodesign' ),
-        'description'         => __( 'Work pieces portfolio', 'lassodesign' ),
+        'label'               => __( 'portfolio', 'trest' ),
+        'description'         => __( 'Work pieces portfolio', 'trest' ),
         'labels'              => $labels,
         // Features this CPT supports in Post Editor
         'supports'            => array( 'title', 'editor', 'excerpt', 'author', 'thumbnail', 'comments', 'revisions', 'custom-fields', ),
@@ -287,6 +287,6 @@ function lassodesign_custom_post_type() {
 * unnecessarily executed. 
 */
 
-add_action( 'init', 'lassodesign_custom_post_type', 0 );
+add_action( 'init', 'trest_custom_post_type', 0 );
 
 
