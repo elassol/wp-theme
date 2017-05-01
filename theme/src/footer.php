@@ -6,7 +6,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
- * @package trest
+ * @package lassodesign
  */
 
 ?>
@@ -43,7 +43,7 @@
 
 		<div class="site-info">
 			<p>
-                <a href="<?php echo esc_url( __( 'https://wordpress.org/', 'trest' ) ); ?>">trest LTD</a>
+                <a href="<?php echo esc_url( __( 'https://wordpress.org/', 'lassodesign' ) ); ?>">lassodesign LTD</a>
                
                 &copy; <?php echo date("Y") ?>
 

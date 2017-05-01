@@ -1,7 +1,7 @@
 // main.js
 $(document).ready(function() {
     'use strict';
-    console.log('Load main JS for trest');
+    console.log('Load main JS for lassodesign');
     // document.body.style.backgroundColor = "yellow";
 
     $(window).scroll(function() {
