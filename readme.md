@@ -2,6 +2,8 @@
 
 
 
+
+
 ## symlink to link your theme to the wp-content folder of your wordpress installation 
 
 ```
@@ -11,6 +13,11 @@ ln -s ~/path/to/wp-theme/ ~/path/to/local_install_wordpress
 * example:*
 * ln -s ~/dev/work/theme/ ~/dev/localhost/wp-content/theme/ *
 
+
+## list symlink
+```
+ls -l
+```
 
 ## Create new theme Args:
 

@@ -1,112 +1,64 @@
 <?php
 /**
- * The header for our theme.
+ * Header file common to all
+ * templates
  *
- * This is the template that displays all of the <head> section and everything up until <div id="content">
- *
- * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
- *
- * @package lassodesign
  */
-
-?><!DOCTYPE html>
-<html <?php language_attributes(); ?>>
+?>
+<!doctype html>
+<html class="site no-js" <?php language_attributes(); ?>>
 <head>
-<meta charset="<?php bloginfo( 'charset' ); ?>">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="profile" href="http://gmpg.org/xfn/11">
-<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
+	<!--[if lt IE 9]>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
+	<![endif]-->
+
+	<meta charset="<?php bloginfo( 'charset' ); ?>">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+	
+	<title><?php wp_title(); ?></title>
+
+	<?php // replace the no-js class with js on the html element ?>
+	<script>document.documentElement.className=document.documentElement.className.replace(/\bno-js\b/,'js')</script>
+
+	<?php // load the core js polyfills ?>
+	<script async defer src="<?php echo get_template_directory_uri(); ?>/assets/js/core.js"></script>
+
+	<link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/css/main.css" type="text/css" media="screen" />
 
 
+	<?php wp_head(); ?>
 
 
-<link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/css/main.css" type="text/css" media="screen" />
-<?php wp_head(); ?>
 </head>
 
+
 <body <?php body_class(); ?>>
-
-<div id="page" class="site-wrapper">
-
-	<a class="skip-link screen-reader-text" href="#main"><?php esc_html_e( 'Skip to content', 'lassodesign' ); ?></a>
-	
-	<div>
-		
+	<div id="page" class="site-wrapper">
 
 		
-		
-		<div>
 
-			<a href="<?php echo wp_logout_url( $redirect ); ?>">Not 
-				<?php 
-					$current_user = wp_get_current_user();
-
-					if ($current_user->user_firstname!="") {
-						echo $current_user->user_firstname;
-					} else {
-						echo $current_user->display_name;
-					}
-				?>? Log Out</a>
-		</div>
-
-		<?php $current_user = wp_get_current_user();?>
-		<a href="<?php echo wp_logout_url( $redirect ); ?>">Not <?php echo ($current_user->user_firstname!="")?$current_user->user_firstname:$current_user->display_name;?>? Log Out</a>
-
-		<?php $more=get_field('more_text');?>
-		<a class="cta-bttn" href="<?php echo get_permalink(); ?>">
-			<?php echo ($more!=''?$more:'Read More'); ?>
-		</a>
-
-		<h2>CTA example</h2>
-		<?php $more=get_field('more_text');?>
-		<a class="cta-bttn" href="<?php echo get_permalink(); ?>">
-			<?php
-				$more=get_field('more_text');
-
-				if ($more!="") {
-					echo $more;
-				} else {
-					echo "Read More";
-				}	
-			
-				
-			 ?>
-		 </a>
-		
-
-
-	</div>
-	<header id="masthead" class="site-header" role="banner">
-		<div class="inner-wrapper">
+		<header id="masthead" class="site-header" role="banner">
 			<div class="site-branding">
-				
-				<?php if ( get_theme_mod( 'lassodesign_logo' ) ) : ?>
-				    <div class='site-logo'>
-				        <a href='<?php echo esc_url( home_url( '/' ) ); ?>' title='<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>' rel='home'><img src='<?php echo esc_url( get_theme_mod( 'lassodesign_logo' ) ); ?>' alt='<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>'></a>
-				    </div>
+				<?php
+				if ( is_front_page() && is_home() ) : ?>
+					<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
 				<?php else : ?>
-				    <hgroup>
-				    	<a href='<?php echo esc_url( home_url( '/' ) ); ?>' title='<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>' rel='home'>
-					        <h1 class='site-title'><?php bloginfo( 'name' ); ?></h1>
-					        <h2 class='site-description'><?php bloginfo( 'description' ); ?></h2>
-				       </a>
-				    </hgroup>
-				<?php endif; ?>
-				
+					<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
+				<?php
+				endif;
+
+				$description = get_bloginfo( 'description', 'display' );
+				if ( $description || is_customize_preview() ) : ?>
+					<p class="site-description"><?php echo $description; /* WPCS: xss ok. */ ?></p>
+				<?php
+				endif; ?>
 			</div><!-- .site-branding -->
 
 			<nav id="site-navigation" class="main-navigation" role="navigation">
 				<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'lassodesign' ); ?></button>
-				<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu' ) ); ?>
+				<?php wp_nav_menu( array( 'theme_location' => 'menu-1', 'menu_id' => 'primary-menu' ) ); ?>
 			</nav><!-- #site-navigation -->
-		</div><!-- .inner-wrapper -->
-	</header><!-- #masthead -->
+		</header><!-- #masthead -->
 
-	<section class="site-banner">
-		<div class="inner-wrapper">
-			<h1> LASSODESIGN'S</h1>
-			<h3>Designer, Geek & Coffee lover</h3>
-		</div>
-	</section>
-
-	<div id="content" class="site-content">
+		<div id="content" class="site-content">

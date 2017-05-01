@@ -489,6 +489,112 @@ body {
   position: absolute;
   width: 1px; }
 
+.main-navigation {
+  display: inline-block;
+  width: 75%;
+  height: auto; }
+
+.main-navigation > div {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: hidden; }
+
+#primary-menu {
+  display: block;
+  margin: 0;
+  padding: 0; }
+
+#primary-menu ul {
+  display: block;
+  margin: 0;
+  padding: 0; }
+
+/* Changing Susy default global settings */
+/* Makes border-box properties */
+*, *:before, *:after {
+  box-sizing: border-box; }
+
+.site-wrapper {
+  background: url("../images/bg-baseline.png") repeat top left;
+  width: 100%; }
+  @media (max-width: 767px) {
+    .site-wrapper {
+      background: purple; } }
+  @media (min-width: 768px) {
+    .site-wrapper {
+      background: yellow; } }
+  @media (min-width: 992px) {
+    .site-wrapper {
+      background: orange; } }
+  @media (min-width: 1200px) {
+    .site-wrapper {
+      background: red; } }
+
+.site-header,
+.site-content,
+.site-footer {
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  margin: 0 auto;
+  overflow: hidden;
+  background: white;
+  padding: 32px 16px; }
+  .site-header:after,
+  .site-content:after,
+  .site-footer:after {
+    content: " ";
+    display: block;
+    clear: both; }
+
+.site-branding {
+  width: 66.1%;
+  float: left;
+  margin-right: 1.69%; }
+
+#site-navigation {
+  width: 32.2%;
+  float: right;
+  margin-right: 0; }
+
+.site-footer {
+  background: black; }
+
+.content-area {
+  width: 66.1%;
+  float: left;
+  margin-right: 1.69%; }
+
+.widget-area {
+  width: 32.2%;
+  float: right;
+  margin-right: 0; }
+
+.site-banner {
+  width: 100%;
+  height: 450px;
+  background: url("../images/banner-023.jpg") no-repeat center center;
+  background-size: cover; }
+
+.site-banner.sticky {
+  height: 100px;
+  transition: all 0.8s ease; }
+
+.site-banner .inner-wrapper h3,
+.site-banner .inner-wrapper h1 {
+  display: none; }
+
+h1.site-title {
+  font-size: 27px;
+  line-height: 30px;
+  margin: 0; }
+
+p.site-description {
+  font-size: 12px;
+  line-height: 18px;
+  margin: 0; }
+
 @media print {
   /* ==========================================================================
    Print styles.
