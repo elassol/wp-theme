@@ -494,6 +494,27 @@ body {
   width: 75%;
   height: auto; }
 
+#site-navigation ul {
+  display: inline-block;
+  float: right;
+  list-style-type: none;
+  padding: 0;
+  margin: 0; }
+
+#site-navigation ul li {
+  display: inline-block;
+  float: left;
+  padding-left: 24px; }
+
+#site-navigation ul li a {
+  font-size: 16px;
+  line-height: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px; }
+
+#site-navigation ul li.current-menu-item a {
+  color: green; }
+
 /* Changing Susy default global settings */
 /* Makes border-box properties */
 *, *:before, *:after {
@@ -533,12 +554,12 @@ body {
     clear: both; }
 
 .site-branding {
-  width: 66.1%;
+  width: 32.2%;
   float: left;
   margin-right: 1.69%; }
 
 #site-navigation {
-  width: 32.2%;
+  width: 66.1%;
   float: right;
   margin-right: 0; }
 

@@ -59,12 +59,12 @@ $susy: (
 
 
 .site-branding {
-    @include span(8); 
+    @include span(4); 
 }
 
 
 #site-navigation {
-  @include span(4 last); 
+  @include span(8 last); 
 }
 
 .site-footer {
