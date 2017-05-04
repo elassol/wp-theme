@@ -494,22 +494,6 @@ body {
   width: 75%;
   height: auto; }
 
-.main-navigation > div {
-  display: block;
-  width: 100%;
-  height: auto;
-  overflow: hidden; }
-
-#primary-menu {
-  display: block;
-  margin: 0;
-  padding: 0; }
-
-#primary-menu ul {
-  display: block;
-  margin: 0;
-  padding: 0; }
-
 /* Changing Susy default global settings */
 /* Makes border-box properties */
 *, *:before, *:after {
