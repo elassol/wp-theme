@@ -427,6 +427,12 @@ a {
     color: #222222;
     text-decoration: underline; }
 
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  line-height: 0; }
+
 /**
  * Basic typography style for copy text
  */
@@ -525,14 +531,14 @@ body {
   width: 100%; }
   @media (max-width: 767px) {
     .site-wrapper {
-      background: purple; } }
+      background: green; } }
   @media (min-width: 768px) {
     .site-wrapper {
       background: yellow; } }
-  @media (min-width: 992px) {
+  @media (min-width: 1280px) {
     .site-wrapper {
       background: orange; } }
-  @media (min-width: 1200px) {
+  @media (min-width: 1366px) {
     .site-wrapper {
       background: red; } }
 

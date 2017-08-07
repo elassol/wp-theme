@@ -47,11 +47,11 @@
   }
  
   @else if $class == md {
-    @media (min-width: 992px) { @content; }
+    @media (min-width: 1280px) { @content; }
   }
  
   @else if $class == lg {
-    @media (min-width: 1200px) { @content; }
+    @media (min-width: 1366px) { @content; }
   }
  
   @else {

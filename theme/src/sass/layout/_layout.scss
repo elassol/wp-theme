@@ -30,7 +30,7 @@ $susy: (
   width: 100%;
 
 
-  @include breakpoint(xs) { background: purple; }
+  @include breakpoint(xs) { background: green; }
 
   @include breakpoint(sm) { background: yellow; }
 
